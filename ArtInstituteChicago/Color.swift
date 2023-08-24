@@ -1,11 +1,10 @@
 import Foundation
+import SwiftUI
 
-extension UIColor {
-    
-    static let flatDarkBackground = UIColor(red: 36, green: 36, blue: 36)
-    static let flatDarkCardBackground = UIColor(red: 46, green: 46, blue: 46)
-    
-    convenience init(red: Int, green: Int, blue: Int, a: CGFloat = 1.0) {
-        self.init(red: CGFloat(red) / 255.0, green: CGFloat(green) / 255.0, blue: CGFloat(blue) / 255.0, alpha: a)
-    }
+extension Color {
+    public static let lightBrown = Color(red: 200.0 / 255.0, green: 174.0 / 255.0, blue: 125.0 / 255.0, opacity: 1)
+    public static let lightBeige = Color(red: 200.0 / 134.0, green: 219.0 / 255.0, blue: 200.0 / 255.0, opacity: 1)
+    public static let darkBlue = Color(red: 16.0 / 255.0, green: 44.0 / 255.0, blue: 87.0 / 255.0, opacity: 1)
+    public static let darkBrown = Color(red: 101.0 / 255.0, green: 69.0 / 255.0, blue: 31.0 / 255.0, opacity: 1)
+
 }

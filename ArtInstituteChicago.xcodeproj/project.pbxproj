@@ -8,12 +8,19 @@
 
 /* Begin PBXBuildFile section */
 		D99D81702A798A4200F6278E /* ArtInstituteChicagoApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = D99D816F2A798A4200F6278E /* ArtInstituteChicagoApp.swift */; };
-		D99D81722A798A4200F6278E /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D99D81712A798A4200F6278E /* ContentView.swift */; };
+		D99D81722A798A4200F6278E /* ArtworksList.swift in Sources */ = {isa = PBXBuildFile; fileRef = D99D81712A798A4200F6278E /* ArtworksList.swift */; };
 		D99D81742A798A4400F6278E /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D99D81732A798A4400F6278E /* Assets.xcassets */; };
 		D99D81782A798A4400F6278E /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D99D81772A798A4400F6278E /* Preview Assets.xcassets */; };
 		D99D81822A798A4400F6278E /* ArtInstituteChicagoTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D99D81812A798A4400F6278E /* ArtInstituteChicagoTests.swift */; };
 		D99D818C2A798A4400F6278E /* ArtInstituteChicagoUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D99D818B2A798A4400F6278E /* ArtInstituteChicagoUITests.swift */; };
 		D99D818E2A798A4400F6278E /* ArtInstituteChicagoUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D99D818D2A798A4400F6278E /* ArtInstituteChicagoUITestsLaunchTests.swift */; };
+		D99D819B2A79A13900F6278E /* Model.swift in Sources */ = {isa = PBXBuildFile; fileRef = D99D819A2A79A13900F6278E /* Model.swift */; };
+		D99D819D2A79B9EC00F6278E /* RequestAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = D99D819C2A79B9EC00F6278E /* RequestAPI.swift */; };
+		D99D819F2A7DEAF100F6278E /* Color.swift in Sources */ = {isa = PBXBuildFile; fileRef = D99D819E2A7DEAF100F6278E /* Color.swift */; };
+		D99D81A22A81196D00F6278E /* Swinject in Frameworks */ = {isa = PBXBuildFile; productRef = D99D81A12A81196D00F6278E /* Swinject */; };
+		D99D81A62A81305800F6278E /* DetailArtworksScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = D99D81A52A81305800F6278E /* DetailArtworksScreen.swift */; };
+		D99D81A82A824E7700F6278E /* HomeScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = D99D81A72A824E7700F6278E /* HomeScreen.swift */; };
+		D99D81AA2A85295700F6278E /* FavoritesArtworksList.swift in Sources */ = {isa = PBXBuildFile; fileRef = D99D81A92A85295600F6278E /* FavoritesArtworksList.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -36,7 +43,7 @@
 /* Begin PBXFileReference section */
 		D99D816C2A798A4200F6278E /* ArtInstituteChicago.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ArtInstituteChicago.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D99D816F2A798A4200F6278E /* ArtInstituteChicagoApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArtInstituteChicagoApp.swift; sourceTree = "<group>"; };
-		D99D81712A798A4200F6278E /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
+		D99D81712A798A4200F6278E /* ArtworksList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArtworksList.swift; sourceTree = "<group>"; };
 		D99D81732A798A4400F6278E /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		D99D81752A798A4400F6278E /* ArtInstituteChicago.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = ArtInstituteChicago.entitlements; sourceTree = "<group>"; };
 		D99D81772A798A4400F6278E /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
@@ -45,6 +52,12 @@
 		D99D81872A798A4400F6278E /* ArtInstituteChicagoUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ArtInstituteChicagoUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		D99D818B2A798A4400F6278E /* ArtInstituteChicagoUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArtInstituteChicagoUITests.swift; sourceTree = "<group>"; };
 		D99D818D2A798A4400F6278E /* ArtInstituteChicagoUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArtInstituteChicagoUITestsLaunchTests.swift; sourceTree = "<group>"; };
+		D99D819A2A79A13900F6278E /* Model.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Model.swift; sourceTree = "<group>"; };
+		D99D819C2A79B9EC00F6278E /* RequestAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RequestAPI.swift; sourceTree = "<group>"; };
+		D99D819E2A7DEAF100F6278E /* Color.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Color.swift; sourceTree = "<group>"; };
+		D99D81A52A81305800F6278E /* DetailArtworksScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailArtworksScreen.swift; sourceTree = "<group>"; };
+		D99D81A72A824E7700F6278E /* HomeScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeScreen.swift; sourceTree = "<group>"; };
+		D99D81A92A85295600F6278E /* FavoritesArtworksList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoritesArtworksList.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -52,6 +65,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D99D81A22A81196D00F6278E /* Swinject in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -72,6 +86,13 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		1C71DFBCE64340B049A9347B /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Pods;
+			sourceTree = "<group>";
+		};
 		D99D81632A798A4200F6278E = {
 			isa = PBXGroup;
 			children = (
@@ -79,6 +100,7 @@
 				D99D81802A798A4400F6278E /* ArtInstituteChicagoTests */,
 				D99D818A2A798A4400F6278E /* ArtInstituteChicagoUITests */,
 				D99D816D2A798A4200F6278E /* Products */,
+				1C71DFBCE64340B049A9347B /* Pods */,
 			);
 			sourceTree = "<group>";
 		};
@@ -96,7 +118,13 @@
 			isa = PBXGroup;
 			children = (
 				D99D816F2A798A4200F6278E /* ArtInstituteChicagoApp.swift */,
-				D99D81712A798A4200F6278E /* ContentView.swift */,
+				D99D81A72A824E7700F6278E /* HomeScreen.swift */,
+				D99D81712A798A4200F6278E /* ArtworksList.swift */,
+				D99D81A52A81305800F6278E /* DetailArtworksScreen.swift */,
+				D99D81A92A85295600F6278E /* FavoritesArtworksList.swift */,
+				D99D819E2A7DEAF100F6278E /* Color.swift */,
+				D99D819A2A79A13900F6278E /* Model.swift */,
+				D99D819C2A79B9EC00F6278E /* RequestAPI.swift */,
 				D99D81732A798A4400F6278E /* Assets.xcassets */,
 				D99D81752A798A4400F6278E /* ArtInstituteChicago.entitlements */,
 				D99D81762A798A4400F6278E /* Preview Content */,
@@ -145,6 +173,9 @@
 			dependencies = (
 			);
 			name = ArtInstituteChicago;
+			packageProductDependencies = (
+				D99D81A12A81196D00F6278E /* Swinject */,
+			);
 			productName = ArtInstituteChicago;
 			productReference = D99D816C2A798A4200F6278E /* ArtInstituteChicago.app */;
 			productType = "com.apple.product-type.application";
@@ -217,6 +248,9 @@
 				Base,
 			);
 			mainGroup = D99D81632A798A4200F6278E;
+			packageReferences = (
+				D99D81A02A81196D00F6278E /* XCRemoteSwiftPackageReference "Swinject" */,
+			);
 			productRefGroup = D99D816D2A798A4200F6278E /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -259,7 +293,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				D99D81722A798A4200F6278E /* ContentView.swift in Sources */,
+				D99D819F2A7DEAF100F6278E /* Color.swift in Sources */,
+				D99D819B2A79A13900F6278E /* Model.swift in Sources */,
+				D99D81AA2A85295700F6278E /* FavoritesArtworksList.swift in Sources */,
+				D99D81A82A824E7700F6278E /* HomeScreen.swift in Sources */,
+				D99D81A62A81305800F6278E /* DetailArtworksScreen.swift in Sources */,
+				D99D81722A798A4200F6278E /* ArtworksList.swift in Sources */,
+				D99D819D2A79B9EC00F6278E /* RequestAPI.swift in Sources */,
 				D99D81702A798A4200F6278E /* ArtInstituteChicagoApp.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -347,6 +387,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
@@ -399,6 +440,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
 				SWIFT_COMPILATION_MODE = wholemodule;
@@ -612,6 +654,25 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		D99D81A02A81196D00F6278E /* XCRemoteSwiftPackageReference "Swinject" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/Swinject/Swinject.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 2.0.0;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		D99D81A12A81196D00F6278E /* Swinject */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = D99D81A02A81196D00F6278E /* XCRemoteSwiftPackageReference "Swinject" */;
+			productName = Swinject;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = D99D81642A798A4200F6278E /* Project object */;
 }
