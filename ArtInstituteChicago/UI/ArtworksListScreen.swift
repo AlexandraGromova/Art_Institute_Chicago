@@ -1,36 +1,30 @@
 import SwiftUI
 import Foundation
 
-struct ArtworksList: View {
-    @State var artworks: [Data] = []
+struct ArtworksListScreen: View {
     @State var searchText = ""
- 
+    @StateObject var vm = AppContainer.resolve(ArtWorkListVM.self)
+    
     var body: some View {
-                VStack(){
-                    ScrollView(showsIndicators: false){
-                        ForEach(artworks){ artwork in
-                            NavigationLink {
-                                DetailArtworksScreen(parametrs: artwork.title ?? "", textDescription: artwork.title ?? "")
-                            } label: {
-                                ArtworksListView(artworkTitle: artwork.title ?? "", id: artwork.id?.formatted() ?? "0")
-                                    .listRowSeparator(.hidden)
-                            }
-                           
-                            Spacer()
-                                .frame(height: 15)
-                        }
+        VStack(){
+            ScrollView(showsIndicators: false){
+                ForEach(vm.artworks){ artwork in
+                    NavigationLink {
+                        DetailArtworksScreen(titleImage: artwork.title ?? "", textDescription: artwork.title ?? "", image_id: artwork.image_id ?? "")
+                    } label: {
+                        ArtworksListView(artworkTitle: artwork.title ?? "", id: artwork.id?.formatted() ?? "0")
+                            .listRowSeparator(.hidden)
                     }
+                    
+                    Spacer()
+                        .frame(height: 15)
                 }
-                .searchable(text: $searchText)
-                .listStyle(PlainListStyle())
-      
-        .onAppear(){
-            RequestAPI().getArtworks{ (artworks) in
-                self.artworks = artworks
             }
         }
-   
+        .searchable(text: $searchText)
+        .listStyle(PlainListStyle())
     }
+    
 }
 
 struct ArtworksListView: View{
@@ -73,12 +67,8 @@ struct ArtworksListView: View{
     }
 }
 
-
-
-
-
 struct ContentView_Previews: PreviewProvider {
     static var previews: some View {
-        ArtworksList()
+        ArtworksListScreen()
     }
 }

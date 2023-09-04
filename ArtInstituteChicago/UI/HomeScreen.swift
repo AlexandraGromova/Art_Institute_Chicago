@@ -29,7 +29,8 @@ struct HomeScreen: View {
                 }
                 Spacer()
                 NavigationLink {
-                    DetailArtworksScreen(parametrs: "kjbljb", textDescription: "nklnl")
+                    DetailArtworksScreen(titleImage: "kjbljb", textDescription: "nklnl",
+                                         image_id: "kjk")
                       } label: {
                           Text("Welcome,\nSasha")
                               .lineLimit(nil)
@@ -75,7 +76,7 @@ struct MediumView: View {
         ZStack(alignment: .leading){
             Image("plug_image")
             NavigationLink {
-                ArtworksList()
+                ArtworksListScreen()
             } label: {
                 Text(title)
                     .frame(alignment: .topLeading)

@@ -1,10 +1,11 @@
 import Foundation
 
-struct Artworks: Codable {
-    var data: [Data]
+struct ArtWorkResponse: Codable {
+    var data: [ArtWork]
 }
-struct Data: Codable, Identifiable {
+struct ArtWork: Codable, Identifiable {
     var id : Int?
+    var image_id : String?
     var title : String?
     var place_of_origin : String?
     var date_start : Int?
