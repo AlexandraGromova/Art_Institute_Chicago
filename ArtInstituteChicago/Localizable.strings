@@ -1,0 +1,37 @@
+/* 
+  Localizable.strings
+  ArtInstituteChicago
+
+  Created by Sasha on 08.09.2023.
+   
+*/
+
+// Info Screen
+"textHistory" = "The Art Institute of Chicago, founded in 1879, is one of the oldest and largest art museums in the world. It is based in the Art Institute of Chicago Building in Chicago's Grant Park.";
+"michigaAvenueEntrance" = "Michigan Avenue Entrance \n111 South Michigan Avenue";
+"modernWingEntrance" = "Modern Wing Entrance \n159 East Monroe Street";
+"getDirections" = "Get directions";
+"website" = "Website";
+"followUs" = "Follow us";
+"facebook" = "Facebook";
+"twitter" = "Twitter";
+"instagram" = "Instagram";
+"youTube" = "YouTube";
+"hours" = "Hours";
+"location" = "Location";
+"admission" = "Admission";
+
+// Main Screen
+"welcome" = "Welcome,";
+"play" = "Play";
+"news" = "News";
+"favorite" = "Favorite";
+"artworks" = "Artworks";
+"exhibitions" = "Exhibitions";
+
+// User Profile Screen
+
+"quote" = "Art is long, life is short.";
+"hippocrates" = "Hippocrates";
+"score" = "Score";
+"dateOfRegist" = "Date of registration";

@@ -7,13 +7,16 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		D94F7F0B2AA3D5FE002E064F /* File.swift in Sources */ = {isa = PBXBuildFile; fileRef = D94F7F0A2AA3D5FE002E064F /* File.swift */; };
+		D94F7F0D2AA8B93E002E064F /* MainScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = D94F7F0C2AA8B93E002E064F /* MainScreen.swift */; };
+		D94F7F0F2AA91D3E002E064F /* InfoScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = D94F7F0E2AA91D3E002E064F /* InfoScreen.swift */; };
 		D98F0F2A2A9FCBD3005AB694 /* Text.swift in Sources */ = {isa = PBXBuildFile; fileRef = D98F0F292A9FCBD2005AB694 /* Text.swift */; };
 		D98F0F2E2AA1B8B9005AB694 /* HomeScreenVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = D98F0F2D2AA1B8B9005AB694 /* HomeScreenVM.swift */; };
 		D98F0F302AA1B991005AB694 /* ArtWorkListVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = D98F0F2F2AA1B991005AB694 /* ArtWorkListVM.swift */; };
 		D98F0F322AA1BA06005AB694 /* ArtworkRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = D98F0F312AA1BA06005AB694 /* ArtworkRepository.swift */; };
 		D98F0F352AA1BC88005AB694 /* AppContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = D98F0F342AA1BC88005AB694 /* AppContainer.swift */; };
 		D98F0F3A2AA1C8E0005AB694 /* ArtworksLocalSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = D98F0F392AA1C8E0005AB694 /* ArtworksLocalSource.swift */; };
+		D99BA6E02AAB3E270083A179 /* InfoScreenVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = D99BA6DF2AAB3E270083A179 /* InfoScreenVM.swift */; };
+		D99BA6E22AABACE20083A179 /* UserProfileScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = D99BA6E12AABACE20083A179 /* UserProfileScreen.swift */; };
 		D99D81702A798A4200F6278E /* ArtInstituteChicagoApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = D99D816F2A798A4200F6278E /* ArtInstituteChicagoApp.swift */; };
 		D99D81722A798A4200F6278E /* ArtworksListScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = D99D81712A798A4200F6278E /* ArtworksListScreen.swift */; };
 		D99D81742A798A4400F6278E /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D99D81732A798A4400F6278E /* Assets.xcassets */; };
@@ -21,13 +24,13 @@
 		D99D81822A798A4400F6278E /* ArtInstituteChicagoTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D99D81812A798A4400F6278E /* ArtInstituteChicagoTests.swift */; };
 		D99D818C2A798A4400F6278E /* ArtInstituteChicagoUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D99D818B2A798A4400F6278E /* ArtInstituteChicagoUITests.swift */; };
 		D99D818E2A798A4400F6278E /* ArtInstituteChicagoUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D99D818D2A798A4400F6278E /* ArtInstituteChicagoUITestsLaunchTests.swift */; };
-		D99D819B2A79A13900F6278E /* ArtWork.swift in Sources */ = {isa = PBXBuildFile; fileRef = D99D819A2A79A13900F6278E /* ArtWork.swift */; };
+		D99D819B2A79A13900F6278E /* Artwork.swift in Sources */ = {isa = PBXBuildFile; fileRef = D99D819A2A79A13900F6278E /* Artwork.swift */; };
 		D99D819D2A79B9EC00F6278E /* RemoteSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = D99D819C2A79B9EC00F6278E /* RemoteSource.swift */; };
 		D99D819F2A7DEAF100F6278E /* Color.swift in Sources */ = {isa = PBXBuildFile; fileRef = D99D819E2A7DEAF100F6278E /* Color.swift */; };
 		D99D81A22A81196D00F6278E /* Swinject in Frameworks */ = {isa = PBXBuildFile; productRef = D99D81A12A81196D00F6278E /* Swinject */; };
 		D99D81A62A81305800F6278E /* DetailArtworksScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = D99D81A52A81305800F6278E /* DetailArtworksScreen.swift */; };
-		D99D81A82A824E7700F6278E /* HomeScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = D99D81A72A824E7700F6278E /* HomeScreen.swift */; };
 		D99D81AA2A85295700F6278E /* FavoritesArtworksList.swift in Sources */ = {isa = PBXBuildFile; fileRef = D99D81A92A85295600F6278E /* FavoritesArtworksList.swift */; };
+		D9A4CED52AAA6104000AE2BF /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = D9A4CED42AAA6104000AE2BF /* Localizable.strings */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -48,13 +51,16 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		D94F7F0A2AA3D5FE002E064F /* File.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = File.swift; sourceTree = "<group>"; };
+		D94F7F0C2AA8B93E002E064F /* MainScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainScreen.swift; sourceTree = "<group>"; };
+		D94F7F0E2AA91D3E002E064F /* InfoScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InfoScreen.swift; sourceTree = "<group>"; };
 		D98F0F292A9FCBD2005AB694 /* Text.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Text.swift; sourceTree = "<group>"; };
 		D98F0F2D2AA1B8B9005AB694 /* HomeScreenVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeScreenVM.swift; sourceTree = "<group>"; };
 		D98F0F2F2AA1B991005AB694 /* ArtWorkListVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArtWorkListVM.swift; sourceTree = "<group>"; };
 		D98F0F312AA1BA06005AB694 /* ArtworkRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArtworkRepository.swift; sourceTree = "<group>"; };
 		D98F0F342AA1BC88005AB694 /* AppContainer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppContainer.swift; sourceTree = "<group>"; };
 		D98F0F392AA1C8E0005AB694 /* ArtworksLocalSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArtworksLocalSource.swift; sourceTree = "<group>"; };
+		D99BA6DF2AAB3E270083A179 /* InfoScreenVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InfoScreenVM.swift; sourceTree = "<group>"; };
+		D99BA6E12AABACE20083A179 /* UserProfileScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserProfileScreen.swift; sourceTree = "<group>"; };
 		D99D816C2A798A4200F6278E /* ArtInstituteChicago.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ArtInstituteChicago.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D99D816F2A798A4200F6278E /* ArtInstituteChicagoApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArtInstituteChicagoApp.swift; sourceTree = "<group>"; };
 		D99D81712A798A4200F6278E /* ArtworksListScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArtworksListScreen.swift; sourceTree = "<group>"; };
@@ -66,12 +72,12 @@
 		D99D81872A798A4400F6278E /* ArtInstituteChicagoUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ArtInstituteChicagoUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		D99D818B2A798A4400F6278E /* ArtInstituteChicagoUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArtInstituteChicagoUITests.swift; sourceTree = "<group>"; };
 		D99D818D2A798A4400F6278E /* ArtInstituteChicagoUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArtInstituteChicagoUITestsLaunchTests.swift; sourceTree = "<group>"; };
-		D99D819A2A79A13900F6278E /* ArtWork.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArtWork.swift; sourceTree = "<group>"; };
+		D99D819A2A79A13900F6278E /* Artwork.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Artwork.swift; sourceTree = "<group>"; };
 		D99D819C2A79B9EC00F6278E /* RemoteSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RemoteSource.swift; sourceTree = "<group>"; };
 		D99D819E2A7DEAF100F6278E /* Color.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Color.swift; sourceTree = "<group>"; };
 		D99D81A52A81305800F6278E /* DetailArtworksScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailArtworksScreen.swift; sourceTree = "<group>"; };
-		D99D81A72A824E7700F6278E /* HomeScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeScreen.swift; sourceTree = "<group>"; };
 		D99D81A92A85295600F6278E /* FavoritesArtworksList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoritesArtworksList.swift; sourceTree = "<group>"; };
+		D9A4CED42AAA6104000AE2BF /* Localizable.strings */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; path = Localizable.strings; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -120,13 +126,13 @@
 		D98F0F2C2AA1B7E7005AB694 /* UI */ = {
 			isa = PBXGroup;
 			children = (
-				D99D81A72A824E7700F6278E /* HomeScreen.swift */,
+				D94F7F0C2AA8B93E002E064F /* MainScreen.swift */,
 				D99D81712A798A4200F6278E /* ArtworksListScreen.swift */,
-				D94F7F0A2AA3D5FE002E064F /* File.swift */,
+				D94F7F0E2AA91D3E002E064F /* InfoScreen.swift */,
+				D99BA6E12AABACE20083A179 /* UserProfileScreen.swift */,
 				D99D81A52A81305800F6278E /* DetailArtworksScreen.swift */,
 				D99D81A92A85295600F6278E /* FavoritesArtworksList.swift */,
-				D99D819E2A7DEAF100F6278E /* Color.swift */,
-				D98F0F292A9FCBD2005AB694 /* Text.swift */,
+				D9A4CED62AAA6711000AE2BF /* ExtensionUI */,
 			);
 			path = UI;
 			sourceTree = "<group>";
@@ -153,7 +159,7 @@
 		D98F0F372AA1C7B6005AB694 /* DTO */ = {
 			isa = PBXGroup;
 			children = (
-				D99D819A2A79A13900F6278E /* ArtWork.swift */,
+				D99D819A2A79A13900F6278E /* Artwork.swift */,
 			);
 			path = DTO;
 			sourceTree = "<group>";
@@ -162,6 +168,7 @@
 			isa = PBXGroup;
 			children = (
 				D98F0F2D2AA1B8B9005AB694 /* HomeScreenVM.swift */,
+				D99BA6DF2AAB3E270083A179 /* InfoScreenVM.swift */,
 				D98F0F2F2AA1B991005AB694 /* ArtWorkListVM.swift */,
 			);
 			path = ViewModel;
@@ -194,6 +201,7 @@
 				D98F0F2C2AA1B7E7005AB694 /* UI */,
 				D98F0F2B2AA1B7D6005AB694 /* Logic */,
 				D99D816F2A798A4200F6278E /* ArtInstituteChicagoApp.swift */,
+				D9A4CED42AAA6104000AE2BF /* Localizable.strings */,
 				D99D81732A798A4400F6278E /* Assets.xcassets */,
 				D99D81752A798A4400F6278E /* ArtInstituteChicago.entitlements */,
 				D99D81762A798A4400F6278E /* Preview Content */,
@@ -224,6 +232,15 @@
 				D99D818D2A798A4400F6278E /* ArtInstituteChicagoUITestsLaunchTests.swift */,
 			);
 			path = ArtInstituteChicagoUITests;
+			sourceTree = "<group>";
+		};
+		D9A4CED62AAA6711000AE2BF /* ExtensionUI */ = {
+			isa = PBXGroup;
+			children = (
+				D99D819E2A7DEAF100F6278E /* Color.swift */,
+				D98F0F292A9FCBD2005AB694 /* Text.swift */,
+			);
+			path = ExtensionUI;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -315,6 +332,7 @@
 			knownRegions = (
 				en,
 				Base,
+				"en-GB",
 			);
 			mainGroup = D99D81632A798A4200F6278E;
 			packageReferences = (
@@ -337,6 +355,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				D99D81782A798A4400F6278E /* Preview Assets.xcassets in Resources */,
+				D9A4CED52AAA6104000AE2BF /* Localizable.strings in Resources */,
 				D99D81742A798A4400F6278E /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -363,18 +382,20 @@
 			buildActionMask = 2147483647;
 			files = (
 				D98F0F352AA1BC88005AB694 /* AppContainer.swift in Sources */,
+				D99BA6E22AABACE20083A179 /* UserProfileScreen.swift in Sources */,
 				D99D819F2A7DEAF100F6278E /* Color.swift in Sources */,
-				D99D819B2A79A13900F6278E /* ArtWork.swift in Sources */,
+				D99D819B2A79A13900F6278E /* Artwork.swift in Sources */,
+				D94F7F0F2AA91D3E002E064F /* InfoScreen.swift in Sources */,
 				D99D81AA2A85295700F6278E /* FavoritesArtworksList.swift in Sources */,
-				D99D81A82A824E7700F6278E /* HomeScreen.swift in Sources */,
 				D98F0F3A2AA1C8E0005AB694 /* ArtworksLocalSource.swift in Sources */,
 				D98F0F2A2A9FCBD3005AB694 /* Text.swift in Sources */,
+				D99BA6E02AAB3E270083A179 /* InfoScreenVM.swift in Sources */,
 				D99D81A62A81305800F6278E /* DetailArtworksScreen.swift in Sources */,
 				D99D81722A798A4200F6278E /* ArtworksListScreen.swift in Sources */,
 				D98F0F2E2AA1B8B9005AB694 /* HomeScreenVM.swift in Sources */,
-				D94F7F0B2AA3D5FE002E064F /* File.swift in Sources */,
 				D98F0F322AA1BA06005AB694 /* ArtworkRepository.swift in Sources */,
 				D99D819D2A79B9EC00F6278E /* RemoteSource.swift in Sources */,
+				D94F7F0D2AA8B93E002E064F /* MainScreen.swift in Sources */,
 				D98F0F302AA1B991005AB694 /* ArtWorkListVM.swift in Sources */,
 				D99D81702A798A4200F6278E /* ArtInstituteChicagoApp.swift in Sources */,
 			);

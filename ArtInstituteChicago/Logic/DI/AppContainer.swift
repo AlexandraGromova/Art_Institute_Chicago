@@ -1,10 +1,3 @@
-//
-//  AppContainer.swift
-//  ArtInstituteChicago
-//
-//  Created by Sasha on 01.09.2023.
-//
-
 import Foundation
 import Swinject
 
@@ -24,6 +17,10 @@ class AppContainer {
         container.register(ArtWorkListVM.self) { r in
             ArtWorkListVM(repository: r.resolve(ArtworkRepository.self)!)
         }
+//        container.register(InfoScreenVM.self) { r in
+//            InfoScreenVM(repository: r.resolve(ArtworkRepository.self)!)
+//        }
+        
     }
     
     static func resolve<T>(_ serviceType: T.Type) -> T {

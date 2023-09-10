@@ -1,11 +1,14 @@
 import Foundation
 import SwiftUI
 struct DetailArtworksScreen: View {
+    
     @Environment(\.presentationMode) var presentationMode
+    
     @State var titleImage: String
     @State var textDescription: String
     @State var image_id: String
     @State var isPlaying : Bool = false
+    
     var body: some View {
         VStack(alignment: .trailing){
             Spacer()
@@ -30,11 +33,14 @@ struct DetailArtworksScreen: View {
                     .font(
                         .custom(
                             "AmericanTypewriter-Light",
-                            fixedSize: 30)
+                            fixedSize: titleImage.count > 20 ? 25 : 30
+                        )
                         .weight(.black)
                         
                     )
                     .foregroundColor(Color.darkGreen)
+                    .frame(width: UIScreen.main.bounds.size.width - 70)
+                
                 Spacer()
                 HStack(){
                     VStack(alignment: .leading){
@@ -57,7 +63,8 @@ struct DetailArtworksScreen: View {
                         Text("Medium")
                             .padding(5)
                     }
-                }.customText()
+                }
+                .customText()
                     .frame(width: UIScreen.main.bounds.size.width - 60 , alignment: .leading)
                 Spacer()
             }
@@ -76,22 +83,19 @@ struct DetailArtworksScreen: View {
             
         }
         .ignoresSafeArea()
-        .frame(width: UIScreen.main.bounds.size.width, height: UIScreen.main.bounds.size.height)
-        .background(Color.vintageBeigeGreen)
-        
-               .edgesIgnoringSafeArea(.bottom)
-               .navigationBarBackButtonHidden(true)
-               .navigationBarItems(leading:
-                   Button(action: {
-                       self.presentationMode.wrappedValue.dismiss()
-                   }) {
-                       HStack {
-                           Image(systemName: "arrow.left")
-                               .tint(Color.darkGreen)
-                               .bold()
-                       }
-               })
+        .customScreen()
+        .navigationBarItems(leading:
+                                Button(action: {
+            self.presentationMode.wrappedValue.dismiss()
+        }) {
+            HStack {
+                Image(systemName: "arrow.left")
+                    .tint(Color.darkGreen)
+                    .bold()
+            }
+        })
     }
+    
 }
 struct DetailArtworksScreen_Previews: PreviewProvider {
     static var previews: some View {

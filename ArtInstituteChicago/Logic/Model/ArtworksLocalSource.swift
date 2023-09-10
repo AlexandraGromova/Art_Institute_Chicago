@@ -1,23 +1,14 @@
-//
-//  ArtworksLocalSource.swift
-//  ArtInstituteChicago
-//
-//  Created by Sasha on 01.09.2023.
-//
-
 import Foundation
 import Combine
 
 class ArtworkLocalSource {
     static let ART_WOTK_SOURCE = "art_work_source"
     
-    func observeArtworks() -> AnyPublisher<[ArtWork], Never> {
-//        UserDefaults.standard.
-//        UserDefaults.standard.publisher(for: ArtworkLocalSource.ART_WOTK_SOURCE)
+    func observeArtworks() -> AnyPublisher<[Artwork], Never> {
         return UserDefaults.standard.publisher(for: "art_work_source")
     }
     
-    func saveArtworks(list: [ArtWork]) {
+    func saveArtworks(list: [Artwork]) {
         let convertor = JSONEncoder()
         let stringList = try? convertor.encode(list)
         print( "test_conv set \(stringList)")
@@ -26,7 +17,7 @@ class ArtworkLocalSource {
 }
 
 extension UserDefaults {
-    func publisher(for key: String) -> AnyPublisher<[ArtWork], Never> {
+    func publisher(for key: String) -> AnyPublisher<[Artwork], Never> {
         NotificationCenter.default.publisher(for: UserDefaults.didChangeNotification)
             .map { _ in
                 let convertor = JSONDecoder()
@@ -35,7 +26,7 @@ extension UserDefaults {
                 if strList == nil {
                     return []
                 }
-                return try! convertor.decode([ArtWork].self, from: Data(strList!.utf8))
+                return try! convertor.decode([Artwork].self, from: Data(strList!.utf8))
             }
             .eraseToAnyPublisher()
     }

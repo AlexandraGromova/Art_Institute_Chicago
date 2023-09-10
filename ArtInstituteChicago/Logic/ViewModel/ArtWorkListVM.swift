@@ -1,7 +1,7 @@
 import Foundation
 
 class ArtWorkListVM: ObservableObject {
-    @Published var artworks: [ArtWork] = []
+    @Published var artworks: [Artwork] = []
     
     private let repository: ArtworkRepository // = ArtworkRepository(source: RemoteSource())
     
@@ -13,7 +13,10 @@ class ArtWorkListVM: ObservableObject {
     func updateArtworks() {
         repository.getArtworks { [weak self] list in
             guard let self else { return }
+            print("updateArtworks")
             self.artworks = list
+            self.artworks.append(contentsOf: self.artworks)
+            print("Art", self.artworks.count)
         }
 //        repository.updateArtworks().sink { list in
 //            self.artworks = list
