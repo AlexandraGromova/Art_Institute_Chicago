@@ -14,8 +14,8 @@ class ArtWorkListVM: ObservableObject {
         repository.getArtworks { [weak self] list in
             guard let self else { return }
             print("updateArtworks")
-            self.artworks = list
-            self.artworks.append(contentsOf: self.artworks)
+            self.artworks.append(contentsOf: list)
+//            self.artworks = Array(Set(self.artworks))
             print("Art", self.artworks.count)
         }
 //        repository.updateArtworks().sink { list in

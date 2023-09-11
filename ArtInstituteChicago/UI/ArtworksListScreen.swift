@@ -10,27 +10,28 @@ struct ArtworksListScreen: View {
     
     var body: some View {
         VStack(){
-            ScrollView(showsIndicators: false){
-                    ForEach(vm.artworks){ artwork in
+            ScrollView(showsIndicators: false) {
+                LazyVStack(spacing: 0) {
+                    ForEach(Array(zip(vm.artworks.indices, vm.artworks)), id: \.1.id) { index, artwork in
                         NavigationLink {
                             DetailArtworksScreen(titleImage: artwork.title ?? "", textDescription: artwork.title ?? "", image_id: artwork.image_id ?? "")
-
+                            
                         } label: {
                             ArtworksListView(artworkTitle: artwork.title ?? "", id: artwork.id?.formatted() ?? "0")
                                 .listRowSeparator(.hidden)
-                                .onAppear(){
-                                    num += 1
-                                    print(num)
-                                    if num == 12{
+                                .onAppear() {
+                                    if vm.artworks.count - 4 == index {
+                                        
+                                        print("test_end lastElement \(vm.artworks.count - 4) index \(index)")
                                         vm.updateArtworks()
-                                        num = 0
                                     }
                                 }
-
+                            
                         }
                         Spacer()
                             .frame(height: 15)
                     }
+                }
             }
         }
         .frame(width:  UIScreen.main.bounds.size.width)

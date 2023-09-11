@@ -1,10 +1,10 @@
 import Foundation
 
-struct ArtworkResponse: Codable {
+struct ArtworkResponse: Codable, Hashable {
     var data: [Artwork]
     var pagination: Pagination
 }
-struct Artwork: Codable, Identifiable {
+struct Artwork: Codable, Identifiable, Hashable {
     var id : Int?
     var image_id : String?
     var title : String?
@@ -13,7 +13,7 @@ struct Artwork: Codable, Identifiable {
     var artist_display : String?
     var style_title : String?
 }
-struct Pagination: Codable {
+struct Pagination: Codable, Hashable {
     var next_url: String?
     var prev_url: String?
     var current_page: Int?
