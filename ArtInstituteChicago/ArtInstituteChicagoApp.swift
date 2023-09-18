@@ -7,7 +7,8 @@ struct ArtInstituteChicagoApp: App {
     }
     var body: some Scene {
         WindowGroup {
-            MainScreen()
+//            MainScreen()
+            StartingScreen()
         }
     }
 }

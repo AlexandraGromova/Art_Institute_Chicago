@@ -2,18 +2,28 @@ import Foundation
 import Combine
 
 class ArtworkLocalSource {
-    static let ART_WOTK_SOURCE = "art_work_source"
+    static let ART_WOTK_SOURCE = "artwork_source"
     
     func observeArtworks() -> AnyPublisher<[Artwork], Never> {
-        return UserDefaults.standard.publisher(for: "art_work_source")
+        return UserDefaults.standard.publisher(for: "artwork_source")
     }
     
     func saveArtworks(list: [Artwork]) {
         let convertor = JSONEncoder()
         let stringList = try? convertor.encode(list)
         print( "test_conv set \(stringList)")
-        UserDefaults.standard.set(stringList, forKey: "art_work_source")
+        UserDefaults.standard.set(stringList, forKey: "artwork_source")
     }
+    
+    func saveUserName(name: Any){
+        UserDefaults.standard.set(name, forKey: "userName")
+    }
+    
+    func getUserName(for key: String) -> String?{
+        return (UserDefaults.standard.object(forKey: key) as! String)
+    }
+    
+    
 }
 
 extension UserDefaults {

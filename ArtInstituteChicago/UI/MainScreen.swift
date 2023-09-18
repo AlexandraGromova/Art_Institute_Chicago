@@ -2,19 +2,25 @@ import Foundation
 import SwiftUI
 
 struct MainScreen: View {
-    var nameUser = "Sasha"
+    
+    var vm = AppContainer.resolve(ArtworkLocalSource.self)
+    
     var body: some View {
-        NavigationStack{
-            VStack(){
-                ScrollView(showsIndicators: false){
-                    HStack(){
+        NavigationStack {
+            VStack() {
+                ScrollView(showsIndicators: false) {
+                    HStack() {
                         Spacer()
                             .frame(width: 15)
-                        Image(systemName: "gearshape.circle.fill")
-                            .resizable()
-                            .scaledToFit()
-                            .foregroundColor(Color.darkGreen)
-                            .frame(width: 40)
+                        NavigationLink {
+                            SettingsScreen()
+                        } label: {
+                            Image(systemName: "gearshape.circle.fill")
+                                .resizable()
+                                .scaledToFit()
+                                .foregroundColor(Color.darkGreen)
+                                .frame(width: 40)
+                        }
                         Spacer()
                         NavigationLink {
                             InfoScreen()
@@ -44,45 +50,23 @@ struct MainScreen: View {
                     Text(LocalizedStringKey("welcome"))
                         .lineLimit(nil)
                         .frame(width: UIScreen.main.bounds.size.width - 25, alignment: .leading)
-                        .foregroundColor(Color.darkGreen)
-                        .font(.custom("AmericanTypewriter-Light",
-                                      fixedSize: 40).weight(.black))
-                    Text(nameUser)
+                        .customAmericanTypewriterLight(size: 40)
+                    Text(vm.getUserName(for: "userName") ?? "error")
                         .lineLimit(nil)
                         .frame(width: UIScreen.main.bounds.size.width - 25, alignment: .leading)
-                        .foregroundColor(Color.darkGreen)
-                        .font(.custom("AmericanTypewriter-Light",
-                                      fixedSize: 40).weight(.black))
+                        .customAmericanTypewriterLight(size: 40)
                     HStack() {
                         Spacer()
-                        ZStack(alignment: .leading){
-                            Image("second_plug_image")
-                                .resizable()
-                                .frame(width: UIScreen.main.bounds.size.width/2 - 20, height: 100)
-                                .aspectRatio(contentMode: .fit)
-                                        .brightness(-0.2)
-                            Text(LocalizedStringKey("play"))
-                                .offset(x: 10, y: -15)
-                                .foregroundColor(Color.vintageBeigeGreen)
-                                .customTextTypewriter()
+                        NavigationLink {
+                            GameMainScreen()
+                        } label: {
+                            SmallView(title: LocalizedStringKey("play"))
                         }
-                        .clipShape(RoundedRectangle(cornerRadius: 20))
                         Spacer()
-                        ZStack(alignment: .leading){
-                            Image("second_plug_image")
-                                .resizable()
-                                .frame(width: UIScreen.main.bounds.size.width/2 - 20, height: 100)
-                                .aspectRatio(contentMode: .fit)
-                                        .brightness(-0.2)
-                            Text(LocalizedStringKey("favorite"))
-                                .offset(x: 10, y: -15)
-                                .foregroundColor(Color.vintageBeigeGreen)
-                                .customTextTypewriter()
-                        }
-                        .clipShape(RoundedRectangle(cornerRadius: 20))
+                        SmallView(title: LocalizedStringKey("favorite"))
                         Spacer()
                     }
-                    LargeView(title: LocalizedStringKey("news"))
+                    LargeView(title: LocalizedStringKey("events"))
                     NavigationLink {
                         ArtworksListScreen()
                     } label: {
@@ -93,42 +77,63 @@ struct MainScreen: View {
                 }
             }
             .background(Color.vintageBeigeGreen)
+            .navigationBarBackButtonHidden(true)
         }
+    }
+}
+
+struct SmallView: View {
+    var title: LocalizedStringKey
+    var body: some View {
+        ZStack(alignment: .leading) {
+            Image("second_plug_image")
+                .resizable()
+                .scaledToFill()
+                .frame(width: UIScreen.main.bounds.size.width/2 - 20, height: 100)
+                .aspectRatio(contentMode: .fit)
+                .brightness(-0.2)
+            Text(title)
+                .offset(x: 10, y: -15)
+                .foregroundColor(Color.vintageBeigeGreen)
+                .customAmericanTypewriterLight(size: 25)
+        }
+        .clipShape(RoundedRectangle(cornerRadius: 20))
     }
 }
 
 struct MediumView: View {
     var title: LocalizedStringKey
     var body: some View {
-        ZStack(alignment: .leading){
+        ZStack(alignment: .leading) {
             Image("second_plug_image")
                 .resizable()
+                .scaledToFill()
                 .frame(width: UIScreen.main.bounds.size.width - 25, height: 100)
                 .aspectRatio(contentMode: .fit)
-                        .brightness(-0.2)
-                Text(title)
+                .brightness(-0.2)
+            Text(title)
                 .offset(x: 10, y: -15)
                 .foregroundColor(Color.vintageBeigeGreen)
-                .customTextTypewriter()
+                .customAmericanTypewriterLight(size: 25)
         }
         .clipShape(RoundedRectangle(cornerRadius: 20))
     }
 }
 
-
 struct LargeView: View {
     var title: LocalizedStringKey
     var body: some View {
-        ZStack(alignment: .leading){
+        ZStack(alignment: .leading) {
             Image("second_plug_image")
                 .resizable()
+                .scaledToFill()
                 .frame(width: UIScreen.main.bounds.size.width - 25, height: 150)
                 .aspectRatio(contentMode: .fit)
-                        .brightness(-0.2)
+                .brightness(-0.2)
             Text(title)
-            .offset(x: 10, y: -35)
-            .foregroundColor(Color.vintageBeigeGreen)
-            .customTextTypewriter()
+                .offset(x: 10, y: -35)
+                .foregroundColor(Color.vintageBeigeGreen)
+                .customAmericanTypewriterLight(size: 25)
         }
         .clipShape(RoundedRectangle(cornerRadius: 20))
     }

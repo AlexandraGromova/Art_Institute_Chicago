@@ -7,6 +7,7 @@
 */
 
 // Info Screen
+
 "textHistory" = "The Art Institute of Chicago, founded in 1879, is one of the oldest and largest art museums in the world. It is based in the Art Institute of Chicago Building in Chicago's Grant Park.";
 "michigaAvenueEntrance" = "Michigan Avenue Entrance \n111 South Michigan Avenue";
 "modernWingEntrance" = "Modern Wing Entrance \n159 East Monroe Street";
@@ -22,9 +23,10 @@
 "admission" = "Admission";
 
 // Main Screen
+
 "welcome" = "Welcome,";
 "play" = "Play";
-"news" = "News";
+"events" = "Events";
 "favorite" = "Favorite";
 "artworks" = "Artworks";
 "exhibitions" = "Exhibitions";
@@ -35,3 +37,16 @@
 "hippocrates" = "Hippocrates";
 "score" = "Score";
 "dateOfRegist" = "Date of registration";
+
+// Game Main Screen
+
+"flashCards" = "Flash cards";
+"findTheName" = "Find the name";
+"findTheDate" = "Find the date";
+
+//Starting Screen
+
+"insertImage" = "Insert your Image:";
+"writeName" = "Write your Name:";
+"username" = "Username";
+"continue" = "Continue";

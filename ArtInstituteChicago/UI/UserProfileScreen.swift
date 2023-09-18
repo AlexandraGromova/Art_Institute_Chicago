@@ -1,24 +1,22 @@
 import Foundation
 import SwiftUI
 
-struct UserProfileScreen: View{
+struct UserProfileScreen: View {
     
     @Environment(\.presentationMode) var presentationMode
-
-
     var scoreUser = 1500090
     var dateRegist = "the 6th of September"
-
+    
     var body: some View {
-        VStack(alignment: .center){
+        VStack(alignment: .center) {
             Spacer()
                 .frame(height: 10)
-            UserView( scoreUser: scoreUser, dateRegist: dateRegist)
+            UserView(scoreUser: scoreUser, dateRegist: dateRegist)
             Divider()
                 .frame(width: UIScreen.main.bounds.size.width - 25, height: 1)
                 .background(Color.gray)
             Spacer()
-            NizScreen()
+            BottomView()
         }
         .customScreen()
         .navigationBarItems(leading:
@@ -33,9 +31,10 @@ struct UserProfileScreen: View{
         })
     }
 }
-struct NizScreen: View {
+
+struct BottomView: View {
     var body: some View {
-        VStack(){
+        VStack() {
             Text(LocalizedStringKey("quote"))
                 .frame(alignment: .center)
                 .customAppleSDGothicNeoThin(size: 20)
@@ -61,16 +60,17 @@ struct NizScreen: View {
     }
     
 }
-struct UserView: View{
+struct UserView: View {
     @State var isCorrected = false
     @State var stateAdjustments : Bool = false
+    var vm = AppContainer.resolve(ArtworkLocalSource.self)
     @State private var userName: String = "Username"
     
     var scoreUser : Int
     var dateRegist : String
     
     var body: some View {
-        VStack(){
+        VStack() {
             Image("plug_image")
                 .resizable()
                 .frame(width: 150, height: 150)
@@ -82,9 +82,9 @@ struct UserView: View{
                 .background(Color.gray)
             Spacer()
                 .frame(height: 15)
-            HStack(){
+            HStack() {
                 if !isCorrected {
-                    Text(userName)
+                    Text(vm.getUserName(for: "userName") ?? "error")
                         .customAppleSDGothicNeoThin(size: 30)
                 }
                 if isCorrected {
@@ -105,13 +105,13 @@ struct UserView: View{
             }
             Spacer()
                 .frame(height: 15)
-                Text(LocalizedStringKey("dateOfRegist"))
-                    .customAppleSDGothicNeoThin(size: 30)
-                Text(dateRegist)
-                    .customAppleSDGothicNeoThin(size: 30)
+            Text(LocalizedStringKey("dateOfRegist"))
+                .customAppleSDGothicNeoThin(size: 30)
+            Text(dateRegist)
+                .customAppleSDGothicNeoThin(size: 30)
             Spacer()
                 .frame(height: 15)
-            HStack(){
+            HStack() {
                 Text(LocalizedStringKey("score"))
                     .customAppleSDGothicNeoThin(size: 30)
                 Text("\(scoreUser)")
@@ -119,7 +119,8 @@ struct UserView: View{
             }
         }
     }
-    }
+}
+
 struct UserProfileScreen_Previews: PreviewProvider {
     static var previews: some View {
         UserProfileScreen()

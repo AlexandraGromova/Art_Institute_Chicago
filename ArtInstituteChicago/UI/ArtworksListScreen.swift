@@ -2,44 +2,45 @@ import SwiftUI
 import Foundation
 
 struct ArtworksListScreen: View {
+    
     @Environment(\.presentationMode) var presentationMode
     @State var searchText = ""
-    @StateObject var vm = AppContainer.resolve(ArtWorkListVM.self)
-    @State var num = 0
-    var remote = RemoteSource()
+    @StateObject var vm = AppContainer.resolve(ArtworkListVM.self)
     
     var body: some View {
-        VStack(){
+        VStack() {
             ScrollView(showsIndicators: false) {
                 LazyVStack(spacing: 0) {
                     ForEach(Array(zip(vm.artworks.indices, vm.artworks)), id: \.1.id) { index, artwork in
                         NavigationLink {
-                            DetailArtworksScreen(titleImage: artwork.title ?? "", textDescription: artwork.title ?? "", image_id: artwork.image_id ?? "")
+                            DetailArtworksScreen(titleImage: artwork.title ?? "", image_id: artwork.image_id ?? "")
                             
                         } label: {
-                            ArtworksListView(artworkTitle: artwork.title ?? "", id: artwork.id?.formatted() ?? "0")
+                            ArtworksListCell(artworkTitle: artwork.title ?? "", id: artwork.id?.formatted() ?? "0")
                                 .listRowSeparator(.hidden)
                                 .onAppear() {
                                     if vm.artworks.count - 4 == index {
-                                        
                                         print("test_end lastElement \(vm.artworks.count - 4) index \(index)")
                                         vm.updateArtworks()
                                     }
                                 }
-                            
                         }
                         Spacer()
                             .frame(height: 15)
                     }
+                    ProgressView()
+                        .controlSize(.large)
+                        .progressViewStyle(.circular)
+                        .tint(Color.darkGreen)
+                        .frame(width: 50, height: 50)
+                    Spacer()
+                        .frame(height: 20)
                 }
             }
         }
-        .frame(width:  UIScreen.main.bounds.size.width)
-        .background(Color.vintageBeigeGreen)
+        .customScreen()
         .searchable(text: $searchText)
         .listStyle(PlainListStyle())
-        .edgesIgnoringSafeArea(.bottom)
-        .navigationBarBackButtonHidden(true)
         .navigationBarItems(leading:
                                 Button(action: {
             self.presentationMode.wrappedValue.dismiss()
@@ -51,16 +52,15 @@ struct ArtworksListScreen: View {
             }
         })
     }
-    
 }
 
-struct ArtworksListView: View{
-    @State var isPlaying : Bool = false
+struct ArtworksListCell: View {
+    @State var isPlaying: Bool = false
     var artworkTitle: String
     var id: String
     var body: some View {
-        HStack(){
-            VStack(alignment: .leading){
+        HStack() {
+            VStack(alignment: .leading) {
                 Text(artworkTitle)
                     .customAppleSDGothicNeoThin(size: 20)
                     .frame(alignment: .center)
@@ -81,9 +81,7 @@ struct ArtworksListView: View{
                     .scaledToFit()
                     .tint(Color.darkGreen)
                     .frame(width: 30)
-        
-    }
-                
+            }
         }
         .padding(10)
         .frame(width:  UIScreen.main.bounds.size.width - 20)

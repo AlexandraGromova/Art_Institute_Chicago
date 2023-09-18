@@ -5,21 +5,20 @@ struct DetailArtworksScreen: View {
     @Environment(\.presentationMode) var presentationMode
     
     @State var titleImage: String
-    @State var textDescription: String
     @State var image_id: String
     @State var isPlaying : Bool = false
     
     var body: some View {
-        VStack(alignment: .trailing){
+        VStack(alignment: .trailing) {
             Spacer()
                 .frame(height: 55)
-            ScrollView(showsIndicators: false){
+            ScrollView(showsIndicators: false) {
                 Spacer()
                 AsyncImage(url: URL(string: "https://www.artic.edu/iiif/2/" + image_id + "/full/300,/0/default.jpg")) { image in
                     image
                         .resizable()
                         .scaledToFill()
-                } placeholder: {
+                }placeholder: {
                     ProgressView()
                         .controlSize(.large)
                         .progressViewStyle(.circular)
@@ -42,8 +41,8 @@ struct DetailArtworksScreen: View {
                     .frame(width: UIScreen.main.bounds.size.width - 70)
                 
                 Spacer()
-                HStack(){
-                    VStack(alignment: .leading){
+                HStack() {
+                    VStack(alignment: .leading) {
                         Text("Artist:")
                             .padding(5)
                         Text("Place:")
@@ -53,7 +52,7 @@ struct DetailArtworksScreen: View {
                         Text("Medium:")
                             .padding(5)
                     }
-                    VStack(alignment: .leading){
+                    VStack(alignment: .leading) {
                         Text("Artist")
                             .padding(5)
                         Text("Place")
@@ -64,8 +63,8 @@ struct DetailArtworksScreen: View {
                             .padding(5)
                     }
                 }
-                .customText()
-                    .frame(width: UIScreen.main.bounds.size.width - 60 , alignment: .leading)
+                .customAppleSDGothicNeoThin(size: 25)
+                .frame(width: UIScreen.main.bounds.size.width - 60 , alignment: .leading)
                 Spacer()
             }
             
@@ -99,6 +98,6 @@ struct DetailArtworksScreen: View {
 }
 struct DetailArtworksScreen_Previews: PreviewProvider {
     static var previews: some View {
-        DetailArtworksScreen(titleImage: "njounnkjn jn ijn", textDescription: "njounnkjnf", image_id: "i")
+        DetailArtworksScreen(titleImage: "njounnkjn jn ijn", image_id: "i")
     }
 }

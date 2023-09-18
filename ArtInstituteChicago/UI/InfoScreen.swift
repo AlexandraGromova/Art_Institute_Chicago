@@ -2,10 +2,12 @@ import Foundation
 import SwiftUI
 
 struct InfoScreen: View {
+    
     @Environment(\.presentationMode) var presentationMode
+    
     var body: some View {
-        VStack(){
-            ScrollView(showsIndicators: false){
+        VStack() {
+            ScrollView(showsIndicators: false) {
                 Image("institute_photo")
                     .resizable()
                     .frame(width: UIScreen.main.bounds.size.width - 45, height: 150)
@@ -25,7 +27,6 @@ struct InfoScreen: View {
                 Spacer()
                     .frame(height: 40)
             }
-         
         }
         .customScreen()
         .navigationBarItems(leading:
@@ -40,9 +41,10 @@ struct InfoScreen: View {
         })
     }
 }
-struct InformacionView: View{
+
+struct InformacionView: View {
     var body: some View {
-        VStack(){
+        VStack() {
             HoursView()
             LocationView()
             AdmissionView()
@@ -51,15 +53,15 @@ struct InformacionView: View{
     }
 }
 
-struct HoursView: View{
+struct HoursView: View {
     var body: some View {
         let days = ["Mon", "Tue–Wed", "Thu", "Fri–Sun"]
         let hours = ["11-5", "Closed", "11-8", "11-5"]
-        VStack(){
+        VStack() {
             TitleView(title: LocalizedStringKey("hours"))
             Spacer()
                 .frame(height: 15)
-            HStack(){
+            HStack()  {
                 Spacer()
                 VStack(alignment: .leading){
                     ForEach (days, id: \.self){ day in
@@ -70,8 +72,8 @@ struct HoursView: View{
                 }
                 .offset(x: -25)
                 Spacer()
-                VStack(alignment: .leading){
-                    ForEach (hours, id: \.self){ hour in
+                VStack(alignment: .leading) {
+                    ForEach (hours, id: \.self) { hour in
                         Text(hour)
                             .customAppleSDGothicNeoThin(size: 15)
                             .frame(height: 17)
@@ -85,21 +87,21 @@ struct HoursView: View{
         }
     }
 }
-struct LocationView: View{
+struct LocationView: View {
     var body: some View {
-        VStack(){
+        VStack() {
             TitleView(title: LocalizedStringKey("location"))
             Spacer()
                 .frame(height: 20)
-            HStack(){
-                VStack(){
+            HStack() {
+                VStack() {
                     Image("location_institute")
                         .resizable()
                         .frame(width: 130, height: 130)
                         .padding(0)
                         .border(Color.darkGreen, width: 5)
                 }
-                VStack(alignment: .leading){
+                VStack(alignment: .leading) {
                     Text(LocalizedStringKey("michigaAvenueEntrance"))
                         .customAppleSDGothicNeoThin(size: 15)
                     Link(LocalizedStringKey("getDirections"), destination: URL(string: "https://www.google.com/maps/place/The+Art+Institute+of+Chicago/@41.8795885,-87.6262882,17z/data=!3m1!4b1!4m6!3m5!1s0x880e2ca3e2d94695:0x4829f3cc9ca2d0de!8m2!3d41.8795845!4d-87.6237133!16s%2Fm%2F027hqc_?entry=tts&shorturl=1")!)
@@ -117,23 +119,42 @@ struct LocationView: View{
     }
 }
 
-struct AdmissionView: View{
+struct AdmissionView: View {
     
     let admissions = ["General Admission", "Chicago Residents", "Illinos Resident", "Fast Pass"]
     let ages = ["Adult","Seniors (65+)","Students","Teens (14-17)","Children","Members"]
-    let prices = ["$32","$26","$26","$26","Free","Free"]
+    @State var prices = ["$32","$26","$26","$26","Free","Free"]
     
     var body: some View {
-        VStack(){
+        VStack() {
             TitleView(title: LocalizedStringKey("admission"))
-            HStack(){
+            HStack() {
                 Spacer()
-                VStack(alignment: .leading){
+                VStack(alignment: .leading) {
                     Spacer()
                         .frame(height: 10)
                     ForEach (admissions, id: \.self){ admission in
                         Text(admission)
                             .customAppleSDGothicNeoThin(size: 15)
+                            .underline()
+                            .onTapGesture {
+                                switch admission {
+                                case "General Admission":
+                                    prices = ["$32","$26","$26","$26","Free","Free"]
+                                    
+                                case "Chicago Residents":
+                                    prices = ["$20","$14","$14","Free","Free","Free"]
+                                    
+                                case "Illinos Resident":
+                                    prices = ["$27","$21","$21","$21","Free","Free"]
+                                    
+                                case "Fast Pass" :
+                                    prices = ["$40","$34","$34","$34","Free","Free"]
+                                    
+                                default:
+                                    prices = ["$32","$26","$26","$26","Free","Free"]
+                                }
+                            }
                         Spacer()
                             .frame(height: 5)
                     }
@@ -144,8 +165,7 @@ struct AdmissionView: View{
                 Divider()
                     .frame(width: 1, height: 110)
                     .background(Color.gray)
-                
-                HStack(){
+                HStack() {
                     Spacer()
                         .frame(width: 4)
                     VStack(alignment: .leading){
@@ -160,10 +180,10 @@ struct AdmissionView: View{
                         Spacer()
                     }
                     Spacer()
-                    VStack(alignment: .trailing){
+                    VStack(alignment: .trailing) {
                         Spacer()
                             .frame(height: 10)
-                        ForEach (prices, id: \.self){ price in
+                        ForEach (prices, id: \.self) { price in
                             Text(price)
                                 .customAppleSDGothicNeoThin(size: 15)
                             Spacer()
@@ -184,7 +204,7 @@ struct AdmissionView: View{
     }
 }
 
-struct TitleView: View{
+struct TitleView: View {
     var title: LocalizedStringKey
     var body: some View {
         Text(title)
@@ -195,15 +215,14 @@ struct TitleView: View{
         Divider()
             .frame(width: UIScreen.main.bounds.size.width - 25, height: 1)
             .background(Color.gray)
-        
     }
 }
 
-struct SocialNetworksConteiner: View{
+struct SocialNetworksConteiner: View {
     var body: some View {
-        HStack(){
+        HStack() {
             Spacer()
-            VStack(alignment: .leading){
+            VStack(alignment: .leading) {
                 Spacer()
                     .frame(height: 20)
                 Text(LocalizedStringKey("followUs"))
@@ -220,7 +239,6 @@ struct SocialNetworksConteiner: View{
                 Link(LocalizedStringKey("instagram"), destination: URL(string: "https://www.instagram.com/artinstitutechi/")!)
                     .foregroundColor(Color.vintageBeigeGreen)
                     .customAppleSDGothicNeoThin(size: 15)
-                
                 Link(LocalizedStringKey("youTube"), destination: URL(string: "https://www.youtube.com/user/ArtInstituteChicago")!)
                     .foregroundColor(Color.vintageBeigeGreen)
                     .customAppleSDGothicNeoThin(size: 15)
@@ -231,7 +249,7 @@ struct SocialNetworksConteiner: View{
             Divider()
                 .frame(width: 1, height: 120)
                 .background(Color.vintageBeigeGreen)
-            VStack(alignment: .center){
+            VStack(alignment: .center) {
                 Spacer()
                     .frame(height: 20)
                     .background(Color.red)
@@ -258,8 +276,8 @@ struct SocialNetworksConteiner: View{
         .frame(width: UIScreen.main.bounds.size.width, height: 150)
         .background(Color.darkGreen)
     }
-
 }
+
 struct InfoScreen_Previews: PreviewProvider {
     static var previews: some View {
         InfoScreen()
