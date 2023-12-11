@@ -25,7 +25,7 @@ struct GameMainScreen: View {
             ContainerForCells()
             Spacer()
         }
-        .customScreen()
+        .setupScreen()
         .navigationBarItems(leading:
                                 Button(action: {
             self.presentationMode.wrappedValue.dismiss()

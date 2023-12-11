@@ -66,7 +66,7 @@ struct FlashCardsScreen: View {
             Spacer()
                 .frame(height: 40)
         }
-        .customScreen()
+        .setupScreen()
         .navigationBarItems(leading:
                                 Button(action: {
             self.presentationMode.wrappedValue.dismiss()
