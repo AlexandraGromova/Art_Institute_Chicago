@@ -1,11 +1,12 @@
+
 import Foundation
 import SwiftUI
-struct DetailArtworksScreen: View {
+struct DetailFavoriteScreen: View {
     
     @Environment(\.presentationMode) var presentationMode
 
     @State var isPlaying : Bool = false
-    @State var artwork: Artwork
+    @State var artwork: ArtworkCD
     var vm = AppContainer.resolve(ArtworkLocalSource.self)
     
     var body: some View {
@@ -43,7 +44,7 @@ struct DetailArtworksScreen: View {
                 VStack(){
                     InfoAboutArtwork(text: artwork.artist_display ?? "" , title: "Artist:")
                     InfoAboutArtwork(text: artwork.place_of_origin ?? "", title: "Place:")
-                    InfoAboutArtwork(text: String(artwork.date_start ?? 0), title: "Date:")
+//                    InfoAboutArtwork(text: String(artwork.date_start ?? 0), title: "Date:")
                     InfoAboutArtwork(text: artwork.medium_display ?? "", title: "Medium:")
                 }
                 .customAppleSDGothicNeoThin(size: 25)
@@ -63,9 +64,6 @@ struct DetailArtworksScreen: View {
             .frame(alignment: .bottomTrailing)
             .offset(x: -30, y: -50)
         }
-        .onAppear(){
-            print(artwork.artist_display, artwork.place_of_origin, artwork.title)
-        }
         .ignoresSafeArea()
         .setupScreen()
         .navigationBarItems(leading:
@@ -81,22 +79,4 @@ struct DetailArtworksScreen: View {
     }
 }
 
-struct InfoAboutArtwork: View {
-    var text: String
-    var title: String
-    var body: some View {
-        HStack(alignment: .top) {
-            Spacer()
-                .frame(width: 30)
-            Text(title)
-                .padding(5)
-                .frame(alignment: .topLeading)
-            Spacer()
-            Text(text)
-                .padding(5)
-                .frame(width: UIScreen.main.bounds.size.width/2, alignment: .leading)
-            Spacer()
-                .frame(width: 30)
-        }
-    }
-}
+

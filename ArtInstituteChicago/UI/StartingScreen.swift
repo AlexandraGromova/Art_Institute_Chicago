@@ -2,6 +2,7 @@ import Foundation
 import SwiftUI
 
 struct StartingScreen: View {
+    
     @State private var image = UIImage()
     @State private var showSheet = false
     var body: some View {
@@ -21,14 +22,14 @@ struct StartingScreen: View {
                 }
             }
             .ignoresSafeArea()
-            .customScreen()
+            .setupScreen()
         }
     }
 }
 
 struct ContainerForView: View {
     
-    @State private var image = UIImage()
+    @State private var userPhoto = UIImage()
     @State private var showSheet = false
     var vm = AppContainer.resolve(ArtworkLocalSource.self)
     @State private var userName: String = ""
@@ -43,7 +44,7 @@ struct ContainerForView: View {
             Spacer()
                 .frame(height: 15)
             VStack(){
-                Image(uiImage: image.self)
+                Image(uiImage: userPhoto)
                     .resizable()
                     .frame(width: 200, height: 200)
                     .clipShape(RoundedRectangle(cornerRadius: 100))
@@ -59,7 +60,7 @@ struct ContainerForView: View {
                 showSheet = true
             }
             .sheet(isPresented: $showSheet) {
-                ImagePicker(sourceType: .photoLibrary, selectedImage: self.$image)
+                ImagePicker(sourceType: .photoLibrary, selectedImage: self.$userPhoto)
             }
             Spacer()
                 .frame(height: 40)
@@ -86,6 +87,9 @@ struct ContainerForView: View {
             }
             .onChange(of: userName) { newValue in
                 vm.saveUserName(name: newValue)
+            }
+            .onChange(of: userPhoto) { newValue in
+                vm.saveUserPhoto(photo: newValue.pngData())
             }
         }
     }

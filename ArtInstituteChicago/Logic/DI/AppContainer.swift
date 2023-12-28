@@ -15,11 +15,17 @@ class AppContainer {
             ArtworkRepository(source: r.resolve(RemoteSource.self)!, localSource: r.resolve(ArtworkLocalSource.self)!)
         }
         container.register(ArtworkListVM.self) { r in
-            ArtworkListVM(repository: r.resolve(ArtworkRepository.self)!)
+            ArtworkListVM(getArtworksUC: r.resolve(GetArtworksUC.self)!, searchArtworksUC: r.resolve(SearchArtworksUC.self)!)
         }
-//        container.register(InfoScreenVM.self) { r in
-//            InfoScreenVM(repository: r.resolve(ArtworkRepository.self)!)
-//        }
+        container.register(InfoVM.self) { r in
+            InfoVM()
+        }
+        container.register(GetArtworksUC.self) { r in
+            GetArtworksUC(repository: r.resolve(ArtworkRepository.self)!)
+        }
+        container.register(SearchArtworksUC.self) { r in
+            SearchArtworksUC(repository: r.resolve(ArtworkRepository.self)!)
+        }
         
     }
     

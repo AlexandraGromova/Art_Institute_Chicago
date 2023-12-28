@@ -1,4 +1,14 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="21513" systemVersion="22D49" minimumToolsVersion="Automatic" sourceLanguage="Swift" userDefinedModelVersionIdentifier="">
-    <entity name="Entity" representedClassName="Entity" syncable="YES" codeGenerationType="class"/>
+<model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="22225" systemVersion="23B92" minimumToolsVersion="Automatic" sourceLanguage="Swift" userDefinedModelVersionIdentifier="">
+    <entity name="ArtworkCD" representedClassName="ArtworkCD" syncable="YES" codeGenerationType="class">
+        <attribute name="artist_display" optional="YES" attributeType="String"/>
+        <attribute name="date_start" optional="YES" attributeType="Integer 32" defaultValueString="0" usesScalarValueType="YES"/>
+        <attribute name="id" optional="YES" attributeType="UUID" usesScalarValueType="NO"/>
+        <attribute name="id_favorite" optional="YES" attributeType="String"/>
+        <attribute name="image_id" optional="YES" attributeType="String"/>
+        <attribute name="medium_display" optional="YES" attributeType="String"/>
+        <attribute name="place_of_origin" optional="YES" attributeType="String"/>
+        <attribute name="style_title" optional="YES" attributeType="String"/>
+        <attribute name="title" optional="YES" attributeType="String"/>
+    </entity>
 </model>

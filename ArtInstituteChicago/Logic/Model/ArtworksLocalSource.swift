@@ -1,5 +1,6 @@
 import Foundation
 import Combine
+import SwiftUI
 
 class ArtworkLocalSource {
     static let ART_WOTK_SOURCE = "artwork_source"
@@ -15,12 +16,37 @@ class ArtworkLocalSource {
         UserDefaults.standard.set(stringList, forKey: "artwork_source")
     }
     
+    //todo
+    func saveArtwork(artwork: Artwork) {
+        let convertor = JSONEncoder()
+        let stringArtwork = try? convertor.encode(artwork)
+        print( "test_conv set \(artwork)")
+        UserDefaults.standard.set(artwork, forKey: "artwork_work")
+    }
+    func getArtwork(for key: String) -> Artwork?{
+        return (UserDefaults.standard.object(forKey: key) as! Artwork)
+    }
+    
+    
+    
     func saveUserName(name: Any){
         UserDefaults.standard.set(name, forKey: "userName")
     }
     
     func getUserName(for key: String) -> String?{
-        return (UserDefaults.standard.object(forKey: key) as! String)
+        return (UserDefaults.standard.object(forKey: key) as! String?)
+    }
+    
+    func saveUserPhoto(photo: Data?){
+        let encoded = try! PropertyListEncoder().encode(photo)
+        UserDefaults.standard.set(encoded, forKey: "userPhoto")
+    }
+    
+    func getUserPhoto(for key: String) -> UIImage?{
+        let data = UserDefaults.standard.object(forKey: key)
+        let decoded = try! PropertyListDecoder().decode(Data.self, from: data as! Data)
+        let image = UIImage(data: decoded)
+        return image
     }
     
     

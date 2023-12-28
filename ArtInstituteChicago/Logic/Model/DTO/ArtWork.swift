@@ -12,10 +12,11 @@ struct Artwork: Codable, Identifiable, Hashable {
     var date_start : Int?
     var artist_display : String?
     var style_title : String?
+    var medium_display : String?
 }
 struct Pagination: Codable, Hashable {
     var next_url: String?
     var prev_url: String?
     var current_page: Int?
-    
+    var total_pages: Int?
 }

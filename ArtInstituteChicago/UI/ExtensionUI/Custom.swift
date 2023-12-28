@@ -16,7 +16,7 @@ extension View {
             .foregroundColor(Color.darkGreen)
     }
     
-    func customScreen() -> some View {
+    func setupScreen() -> some View {
         self
             .frame(width: UIScreen.main.bounds.size.width)
             .background(Color.vintageBeigeGreen)

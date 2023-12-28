@@ -4,6 +4,7 @@ import SwiftUI
 struct MainScreen: View {
     
     var vm = AppContainer.resolve(ArtworkLocalSource.self)
+//    @StateObject private var dataController = DataController()
     
     var body: some View {
         NavigationStack {
@@ -60,19 +61,29 @@ struct MainScreen: View {
                         NavigationLink {
                             GameMainScreen()
                         } label: {
-                            SmallView(title: LocalizedStringKey("play"))
+                            MainButton(title: LocalizedStringKey("play"), imageWidth: Int(UIScreen.main.bounds.size.width/2) - 20, imageHeight: 100)
                         }
                         Spacer()
-                        SmallView(title: LocalizedStringKey("favorite"))
-                        Spacer()
+                        
+                        NavigationLink {
+                            FavoritesScreen()
+                        } label: {
+                            MainButton(title: LocalizedStringKey("favorite"), imageWidth: Int(UIScreen.main.bounds.size.width/2) - 20, imageHeight: 100)
+                        }
+                          Spacer()
                     }
-                    LargeView(title: LocalizedStringKey("events"))
+                    MainButton(title: LocalizedStringKey("events"), imageWidth: Int(UIScreen.main.bounds.size.width) - 25, imageHeight: 150,  isLarge: true)
                     NavigationLink {
                         ArtworksListScreen()
                     } label: {
-                        MediumView(title: LocalizedStringKey("artworks"))
+                        MainButton(title: LocalizedStringKey("artworks"), imageWidth: Int(UIScreen.main.bounds.size.width) - 25, imageHeight: 100)
                     }
-                    MediumView(title: LocalizedStringKey("exhibitions"))
+                    NavigationLink {
+                        UserProfileScreen()
+                    } label: {
+                        MainButton(title: LocalizedStringKey("exhibitions"), imageWidth: Int(UIScreen.main.bounds.size.width) - 25, imageHeight: 100)
+                    }
+                  
                     Spacer()
                 }
             }
@@ -82,56 +93,21 @@ struct MainScreen: View {
     }
 }
 
-struct SmallView: View {
+struct MainButton: View {
     var title: LocalizedStringKey
+    var imageWidth: Int
+    var imageHeight: Int
+    var isLarge = false
     var body: some View {
         ZStack(alignment: .leading) {
             Image("second_plug_image")
                 .resizable()
                 .scaledToFill()
-                .frame(width: UIScreen.main.bounds.size.width/2 - 20, height: 100)
+                .frame(width:  CGFloat(imageWidth), height:  CGFloat(imageHeight))
                 .aspectRatio(contentMode: .fit)
                 .brightness(-0.2)
             Text(title)
-                .offset(x: 10, y: -15)
-                .foregroundColor(Color.vintageBeigeGreen)
-                .customAmericanTypewriterLight(size: 25)
-        }
-        .clipShape(RoundedRectangle(cornerRadius: 20))
-    }
-}
-
-struct MediumView: View {
-    var title: LocalizedStringKey
-    var body: some View {
-        ZStack(alignment: .leading) {
-            Image("second_plug_image")
-                .resizable()
-                .scaledToFill()
-                .frame(width: UIScreen.main.bounds.size.width - 25, height: 100)
-                .aspectRatio(contentMode: .fit)
-                .brightness(-0.2)
-            Text(title)
-                .offset(x: 10, y: -15)
-                .foregroundColor(Color.vintageBeigeGreen)
-                .customAmericanTypewriterLight(size: 25)
-        }
-        .clipShape(RoundedRectangle(cornerRadius: 20))
-    }
-}
-
-struct LargeView: View {
-    var title: LocalizedStringKey
-    var body: some View {
-        ZStack(alignment: .leading) {
-            Image("second_plug_image")
-                .resizable()
-                .scaledToFill()
-                .frame(width: UIScreen.main.bounds.size.width - 25, height: 150)
-                .aspectRatio(contentMode: .fit)
-                .brightness(-0.2)
-            Text(title)
-                .offset(x: 10, y: -35)
+                .offset(x: 10, y: isLarge ? -30 : -15)
                 .foregroundColor(Color.vintageBeigeGreen)
                 .customAmericanTypewriterLight(size: 25)
         }

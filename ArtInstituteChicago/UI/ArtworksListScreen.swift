@@ -1,27 +1,39 @@
 import SwiftUI
 import Foundation
+import CoreData
 
 struct ArtworksListScreen: View {
     
     @Environment(\.presentationMode) var presentationMode
-    @State var searchText = ""
     @StateObject var vm = AppContainer.resolve(ArtworkListVM.self)
+    @Environment(\.managedObjectContext) var moc
+    @FetchRequest(sortDescriptors: []) var artworksCD: FetchedResults<ArtworkCD>
     
     var body: some View {
         VStack() {
+            SearchView { text in
+                vm.searchArtworks(text)
+            }
+            Spacer()
+                .frame(height: 15)
             ScrollView(showsIndicators: false) {
                 LazyVStack(spacing: 0) {
                     ForEach(Array(zip(vm.artworks.indices, vm.artworks)), id: \.1.id) { index, artwork in
                         NavigationLink {
-                            DetailArtworksScreen(titleImage: artwork.title ?? "", image_id: artwork.image_id ?? "")
-                            
+                            DetailArtworksScreen(artwork: artwork)
                         } label: {
-                            ArtworksListCell(artworkTitle: artwork.title ?? "", id: artwork.id?.formatted() ?? "0")
+                            let isFavorited = artworksCD.contains { item in
+                                item.id_favorite == artwork.id?.formatted() ?? "0"
+                            }
+                            ArtworksListCell(isFavorite: isFavorited , artwork: artwork, artworkTitle: artwork.title ?? "", id: artwork.id?.formatted() ?? "0")
                                 .listRowSeparator(.hidden)
                                 .onAppear() {
                                     if vm.artworks.count - 4 == index {
-                                        print("test_end lastElement \(vm.artworks.count - 4) index \(index)")
-                                        vm.updateArtworks()
+                                        if vm.isSearchMode {
+                                            vm.updateSearchingArtworks()
+                                        } else {
+                                            vm.updateArtworks()
+                                        }
                                     }
                                 }
                         }
@@ -38,8 +50,7 @@ struct ArtworksListScreen: View {
                 }
             }
         }
-        .customScreen()
-        .searchable(text: $searchText)
+        .setupScreen()
         .listStyle(PlainListStyle())
         .navigationBarItems(leading:
                                 Button(action: {
@@ -55,7 +66,12 @@ struct ArtworksListScreen: View {
 }
 
 struct ArtworksListCell: View {
-    @State var isPlaying: Bool = false
+    
+    @Environment(\.managedObjectContext) var moc
+    @FetchRequest(sortDescriptors: []) var artworksCD: FetchedResults<ArtworkCD>
+    
+    @State var isFavorite: Bool
+    var artwork: Artwork
     var artworkTitle: String
     var id: String
     var body: some View {
@@ -74,13 +90,47 @@ struct ArtworksListCell: View {
             }
             Spacer()
             Button(action: {
-                self.isPlaying.toggle()
+                
+                if self.isFavorite == true{
+                    let isFavorited = artworksCD.contains { item in
+                        if  item.id_favorite == id {
+                            moc.delete(item)
+                            self.isFavorite.toggle()
+                            return false
+                        }
+                        return false
+                    }
+                }
+                else {
+                    let artworkCD = ArtworkCD(context: moc)
+                    artworkCD.id = UUID()
+                    artworkCD.artist_display = artwork.artist_display
+//                    artworkCD.date_start = artwork.date_start
+                    artworkCD.image_id = artwork.image_id
+                    artworkCD.medium_display = artwork.medium_display
+                    artworkCD.place_of_origin = artwork.place_of_origin
+                    artworkCD.style_title = artwork.style_title
+                    artworkCD.id_favorite = id
+                    artworkCD.title = artworkTitle
+                    try? moc.save()
+                    self.isFavorite.toggle()
+                }
             }) {
-                Image(systemName: self.isPlaying == true ? "heart.circle.fill" : "heart.circle")
-                    .resizable()
-                    .scaledToFit()
-                    .tint(Color.darkGreen)
-                    .frame(width: 30)
+                if self.isFavorite == true{
+                    Image(systemName: "heart.circle.fill")
+                        .resizable()
+                        .scaledToFit()
+                        .tint(Color.darkGreen)
+                        .frame(width: 30)
+                    
+                }
+                else{
+                    Image(systemName: "heart.circle")
+                        .resizable()
+                        .scaledToFit()
+                        .tint(Color.darkGreen)
+                        .frame(width: 30)
+                }
             }
         }
         .padding(10)

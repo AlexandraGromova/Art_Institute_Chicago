@@ -18,7 +18,7 @@ struct UserProfileScreen: View {
             Spacer()
             BottomView()
         }
-        .customScreen()
+        .setupScreen()
         .navigationBarItems(leading:
                                 Button(action: {
             self.presentationMode.wrappedValue.dismiss()
@@ -71,7 +71,7 @@ struct UserView: View {
     
     var body: some View {
         VStack() {
-            Image("plug_image")
+            Image(uiImage: vm.getUserPhoto(for: "userPhoto")! )
                 .resizable()
                 .frame(width: 150, height: 150)
                 .clipShape(RoundedRectangle(cornerRadius: 75))

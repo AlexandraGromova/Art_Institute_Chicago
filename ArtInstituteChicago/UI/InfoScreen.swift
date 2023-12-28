@@ -28,7 +28,7 @@ struct InfoScreen: View {
                     .frame(height: 40)
             }
         }
-        .customScreen()
+        .setupScreen()
         .navigationBarItems(leading:
                                 Button(action: {
             self.presentationMode.wrappedValue.dismiss()
@@ -54,9 +54,8 @@ struct InformacionView: View {
 }
 
 struct HoursView: View {
+    @StateObject var vm = AppContainer.resolve(InfoVM.self)
     var body: some View {
-        let days = ["Mon", "Tue–Wed", "Thu", "Fri–Sun"]
-        let hours = ["11-5", "Closed", "11-8", "11-5"]
         VStack() {
             TitleView(title: LocalizedStringKey("hours"))
             Spacer()
@@ -64,7 +63,7 @@ struct HoursView: View {
             HStack()  {
                 Spacer()
                 VStack(alignment: .leading){
-                    ForEach (days, id: \.self){ day in
+                    ForEach (vm.getDays(), id: \.self){ day in
                         Text(day)
                             .customAppleSDGothicNeoThin(size: 15)
                             .frame(height: 17)
@@ -73,7 +72,7 @@ struct HoursView: View {
                 .offset(x: -25)
                 Spacer()
                 VStack(alignment: .leading) {
-                    ForEach (hours, id: \.self) { hour in
+                    ForEach (vm.getHours(), id: \.self) { hour in
                         Text(hour)
                             .customAppleSDGothicNeoThin(size: 15)
                             .frame(height: 17)
@@ -121,10 +120,7 @@ struct LocationView: View {
 
 struct AdmissionView: View {
     
-    let admissions = ["General Admission", "Chicago Residents", "Illinos Resident", "Fast Pass"]
-    let ages = ["Adult","Seniors (65+)","Students","Teens (14-17)","Children","Members"]
-    @State var prices = ["$32","$26","$26","$26","Free","Free"]
-    
+    @StateObject var vm = AppContainer.resolve(InfoVM.self)
     var body: some View {
         VStack() {
             TitleView(title: LocalizedStringKey("admission"))
@@ -133,27 +129,13 @@ struct AdmissionView: View {
                 VStack(alignment: .leading) {
                     Spacer()
                         .frame(height: 10)
-                    ForEach (admissions, id: \.self){ admission in
+                    ForEach (vm.getAdmissions(), id: \.self){ admission in
                         Text(admission)
                             .customAppleSDGothicNeoThin(size: 15)
                             .underline()
                             .onTapGesture {
-                                switch admission {
-                                case "General Admission":
-                                    prices = ["$32","$26","$26","$26","Free","Free"]
-                                    
-                                case "Chicago Residents":
-                                    prices = ["$20","$14","$14","Free","Free","Free"]
-                                    
-                                case "Illinos Resident":
-                                    prices = ["$27","$21","$21","$21","Free","Free"]
-                                    
-                                case "Fast Pass" :
-                                    prices = ["$40","$34","$34","$34","Free","Free"]
-                                    
-                                default:
-                                    prices = ["$32","$26","$26","$26","Free","Free"]
-                                }
+                                vm.updatePrices(admission: admission)
+                                
                             }
                         Spacer()
                             .frame(height: 5)
@@ -171,7 +153,7 @@ struct AdmissionView: View {
                     VStack(alignment: .leading){
                         Spacer()
                             .frame(height: 10)
-                        ForEach (ages, id: \.self){ age in
+                        ForEach (vm.getAges(), id: \.self){ age in
                             Text(age)
                                 .customAppleSDGothicNeoThin(size: 15)
                             Spacer()
@@ -183,7 +165,7 @@ struct AdmissionView: View {
                     VStack(alignment: .trailing) {
                         Spacer()
                             .frame(height: 10)
-                        ForEach (prices, id: \.self) { price in
+                        ForEach (vm.prices, id: \.self) { price in
                             Text(price)
                                 .customAppleSDGothicNeoThin(size: 15)
                             Spacer()
@@ -191,6 +173,7 @@ struct AdmissionView: View {
                         }
                         Spacer()
                     }
+                    .animation(.linear(duration: 0.3), value: vm.prices)
                     Spacer()
                         .frame(width: 0)
                 }

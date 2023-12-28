@@ -8,8 +8,8 @@ struct SettingsScreen: View {
     var body: some View {
         VStack() {
             Spacer()
-                .frame(height: 30)
-            Text("Settings")
+                .frame(height: 10)
+            Text(LocalizedStringKey("settings"))
                 .customAmericanTypewriterLight(size: 35)
                 .frame(width: UIScreen.main.bounds.size.width - 50, alignment: .leading)
             Spacer()
@@ -25,7 +25,7 @@ struct SettingsScreen: View {
             Spacer()
                 .frame(height: 40)
         }
-        .customScreen()
+        .setupScreen()
         .navigationBarItems(leading:
                                 Button(action: {
             self.presentationMode.wrappedValue.dismiss()
@@ -40,6 +40,7 @@ struct SettingsScreen: View {
 }
 
 struct NotificationsView: View {
+    @State private var showGreeting = true
     var body: some View {
         VStack() {
             HStack() {
@@ -51,7 +52,7 @@ struct NotificationsView: View {
                     .foregroundColor(Color.darkGreen)
                 Spacer()
                     .frame(width: 15)
-                Text("Notifications")
+                Text(LocalizedStringKey("notifications"))
                     .customAmericanTypewriterLight(size: 25)
                 Spacer()
             }
@@ -62,14 +63,17 @@ struct NotificationsView: View {
                 .background(Color.gray)
             Spacer()
                 .frame(height: 15)
-            Text("Notifications")
-                .customAppleSDGothicNeoThin(size: 20)
-                .frame(width: UIScreen.main.bounds.size.width - 50, alignment: .leading)
-            Spacer()
-                .frame(height: 10)
-            Text("Notifications")
-                .customAppleSDGothicNeoThin(size: 20)
-                .frame(width: UIScreen.main.bounds.size.width - 50, alignment: .leading)
+            HStack() {
+                Spacer()
+                Toggle(isOn: $showGreeting, label: {
+                    Text(LocalizedStringKey("notifications"))
+                        .customAppleSDGothicNeoThin(size: 20)
+                })
+                .toggleStyle(SwitchToggleStyle())
+                .tint(.gray)
+                .frame(width: UIScreen.main.bounds.size.width - 30, alignment: .leading)
+                Spacer()
+            }
         }
     }
 }
@@ -86,7 +90,7 @@ struct AccountView: View {
                     .foregroundColor(Color.darkGreen)
                 Spacer()
                     .frame(width: 15)
-                Text("Account")
+                Text(LocalizedStringKey("account"))
                     .customAmericanTypewriterLight(size: 25)
                 Spacer()
             }
@@ -97,16 +101,17 @@ struct AccountView: View {
                 .background(Color.gray)
             VStack() {
                 Spacer()
-                    .frame(height: 15)
-                Text("Notifications")
+                    .frame(height: 20)
+                Text(LocalizedStringKey("deliteAccount"))
                     .customAppleSDGothicNeoThin(size: 20)
-                    .frame(width: UIScreen.main.bounds.size.width - 50, alignment: .leading)
-                Spacer()
-                    .frame(height: 10)
-                Text("Notifications")
-                    .customAppleSDGothicNeoThin(size: 20)
-                    .frame(width: UIScreen.main.bounds.size.width - 50, alignment: .leading)
+                    .frame(width: 140, alignment: .center)
+                    .padding(10)
+                       .overlay(
+                        RoundedRectangle(cornerRadius: 16)
+                            .stroke(Color.darkGreen, lineWidth: 4)
+                    )
             }
+            .frame(width: UIScreen.main.bounds.size.width - 25, alignment: .leading)
         }
     }
 }

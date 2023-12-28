@@ -77,13 +77,13 @@ struct GameCell: View {
                     .bold()
                     .foregroundColor(Color.darkGreen)
                 
-            } .alert(textInfoGame, isPresented: $showingAlert) {
+            }
+            .alert(textInfoGame, isPresented: $showingAlert) {
                 Button("OK", role: .cancel) { }
             }
             Spacer()
                 .frame(width: 10)
         }
-        
         .frame(width: UIScreen.main.bounds.size.width - 60, height: 45)
         .padding()
         .overlay(

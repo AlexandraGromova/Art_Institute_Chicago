@@ -50,3 +50,10 @@
 "writeName" = "Write your Name:";
 "username" = "Username";
 "continue" = "Continue";
+
+//Settings Screen
+
+"settings" = "Settings";
+"notifications" = "Notifications";
+"account" = "Account";
+"deliteAccount" = "Delite Account";
