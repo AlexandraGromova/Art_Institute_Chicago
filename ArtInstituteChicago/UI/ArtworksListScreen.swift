@@ -8,6 +8,7 @@ struct ArtworksListScreen: View {
     @StateObject var vm = AppContainer.resolve(ArtworkListVM.self)
     @Environment(\.managedObjectContext) var moc
     @FetchRequest(sortDescriptors: []) var artworksCD: FetchedResults<ArtworkCD>
+    @State var isHidden = false
     
     var body: some View {
         VStack() {
@@ -20,7 +21,11 @@ struct ArtworksListScreen: View {
                 LazyVStack(spacing: 0) {
                     ForEach(Array(zip(vm.artworks.indices, vm.artworks)), id: \.1.id) { index, artwork in
                         NavigationLink {
-                            DetailArtworksScreen(artwork: artwork)
+                            let isFavorited = artworksCD.contains { item in
+                                item.id_favorite == artwork.id?.formatted() ?? "0"
+                            }
+                            DetailArtworksScreen(isFavorite: isFavorited, artwork: artwork)
+                                .onAppear { print("🟠 Appear") }
                         } label: {
                             let isFavorited = artworksCD.contains { item in
                                 item.id_favorite == artwork.id?.formatted() ?? "0"
@@ -28,9 +33,14 @@ struct ArtworksListScreen: View {
                             ArtworksListCell(isFavorite: isFavorited , artwork: artwork, artworkTitle: artwork.title ?? "", id: artwork.id?.formatted() ?? "0")
                                 .listRowSeparator(.hidden)
                                 .onAppear() {
+                                    print("🟢 OnAppear")
+                                    print("test_ArtworkList_onAppear_isFavorited =\(isFavorited)")
+                                    vm.getMoreInfoArtwork(artworkIndex: artwork.id ?? 0)
+                                    isHidden = vm.updateIsHidden()
                                     if vm.artworks.count - 4 == index {
                                         if vm.isSearchMode {
                                             vm.updateSearchingArtworks()
+                                            print("test_isHidden \(isHidden)")
                                         } else {
                                             vm.updateArtworks()
                                         }
@@ -40,16 +50,20 @@ struct ArtworksListScreen: View {
                         Spacer()
                             .frame(height: 15)
                     }
-                    ProgressView()
-                        .controlSize(.large)
-                        .progressViewStyle(.circular)
-                        .tint(Color.darkGreen)
-                        .frame(width: 50, height: 50)
+                    if isHidden == false {
+                        ProgressView()
+                            .controlSize(.large)
+                            .progressViewStyle(.circular)
+                            .tint(Color.darkGreen)
+                            .frame(width: 50, height: 50)
+                            
+                    }
                     Spacer()
                         .frame(height: 20)
                 }
             }
         }
+//        .onAppear { print("🔴 OnAppear") }
         .setupScreen()
         .listStyle(PlainListStyle())
         .navigationBarItems(leading:
@@ -67,6 +81,7 @@ struct ArtworksListScreen: View {
 
 struct ArtworksListCell: View {
     
+    @StateObject var vm = AppContainer.resolve(ArtworkListVM.self)
     @Environment(\.managedObjectContext) var moc
     @FetchRequest(sortDescriptors: []) var artworksCD: FetchedResults<ArtworkCD>
     
@@ -74,6 +89,8 @@ struct ArtworksListCell: View {
     var artwork: Artwork
     var artworkTitle: String
     var id: String
+    
+    
     var body: some View {
         HStack() {
             VStack(alignment: .leading) {
@@ -90,7 +107,7 @@ struct ArtworksListCell: View {
             }
             Spacer()
             Button(action: {
-                
+               
                 if self.isFavorite == true{
                     let isFavorited = artworksCD.contains { item in
                         if  item.id_favorite == id {
@@ -100,31 +117,34 @@ struct ArtworksListCell: View {
                         }
                         return false
                     }
+                    
                 }
                 else {
+                     
                     let artworkCD = ArtworkCD(context: moc)
                     artworkCD.id = UUID()
                     artworkCD.artist_display = artwork.artist_display
-//                    artworkCD.date_start = artwork.date_start
+                    artworkCD.date_start = Int64(artwork.date_start ?? 0)
                     artworkCD.image_id = artwork.image_id
                     artworkCD.medium_display = artwork.medium_display
                     artworkCD.place_of_origin = artwork.place_of_origin
                     artworkCD.style_title = artwork.style_title
                     artworkCD.id_favorite = id
+                    print("test_ArtworkListScreen CD id favorite\(artworkCD.id_favorite) artwork_id \(id)")
                     artworkCD.title = artworkTitle
                     try? moc.save()
                     self.isFavorite.toggle()
                 }
-            }) {
-                if self.isFavorite == true{
+            }) 
+            
+            {
+                if isFavorite{
                     Image(systemName: "heart.circle.fill")
                         .resizable()
                         .scaledToFit()
                         .tint(Color.darkGreen)
                         .frame(width: 30)
-                    
-                }
-                else{
+                } else {
                     Image(systemName: "heart.circle")
                         .resizable()
                         .scaledToFit()
@@ -132,6 +152,9 @@ struct ArtworksListCell: View {
                         .frame(width: 30)
                 }
             }
+        }
+        .onAppear(){
+            print("test_ArtworkCell_onAppear_isFavorite = \(isFavorite)")
         }
         .padding(10)
         .frame(width:  UIScreen.main.bounds.size.width - 20)

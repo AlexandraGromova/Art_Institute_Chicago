@@ -15,7 +15,7 @@ class AppContainer {
             ArtworkRepository(source: r.resolve(RemoteSource.self)!, localSource: r.resolve(ArtworkLocalSource.self)!)
         }
         container.register(ArtworkListVM.self) { r in
-            ArtworkListVM(getArtworksUC: r.resolve(GetArtworksUC.self)!, searchArtworksUC: r.resolve(SearchArtworksUC.self)!)
+            ArtworkListVM(getArtworksUC: r.resolve(GetArtworksUC.self)!, searchArtworksUC: r.resolve(SearchArtworksUC.self)!, getMoreInfoArtworkUC: r.resolve(GetMoreInfoArtworkUC.self)!, getFavoriteArtworkUC: r.resolve(GetFavoriteArtworkUC.self)!)
         }
         container.register(InfoVM.self) { r in
             InfoVM()
@@ -25,6 +25,14 @@ class AppContainer {
         }
         container.register(SearchArtworksUC.self) { r in
             SearchArtworksUC(repository: r.resolve(ArtworkRepository.self)!)
+        }
+        
+        container.register(GetMoreInfoArtworkUC.self) { r in
+            GetMoreInfoArtworkUC(repository: r.resolve(ArtworkRepository.self)!)
+        }
+        
+        container.register(GetFavoriteArtworkUC.self) { r in
+            GetFavoriteArtworkUC()
         }
         
     }

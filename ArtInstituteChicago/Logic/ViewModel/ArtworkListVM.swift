@@ -8,13 +8,17 @@ class ArtworkListVM: ObservableObject {
     
     private let getArtworksUC : GetArtworksUC
     private let searchArtworksUC : SearchArtworksUC
+    private let getMoreInfoArtworkUC : GetMoreInfoArtworkUC
+    private let getFavoriteArtworkUC : GetFavoriteArtworkUC
     
     private var cancelable = Set<AnyCancellable>()
     private var searchText = ""
     
-    init(getArtworksUC : GetArtworksUC, searchArtworksUC: SearchArtworksUC) {
+    init(getArtworksUC : GetArtworksUC, searchArtworksUC: SearchArtworksUC, getMoreInfoArtworkUC : GetMoreInfoArtworkUC, getFavoriteArtworkUC : GetFavoriteArtworkUC) {
         self.getArtworksUC = getArtworksUC
         self.searchArtworksUC = searchArtworksUC
+        self.getMoreInfoArtworkUC = getMoreInfoArtworkUC
+        self.getFavoriteArtworkUC = getFavoriteArtworkUC
         
         $isSearchMode
             .receive(on: RunLoop.main)
@@ -27,18 +31,25 @@ class ArtworkListVM: ObservableObject {
                 }
             }
             .store(in: &cancelable)
-
     }
-
+    
+    func deliteFevorite(idArtwork : String, moc: Any, func: () -> ()){
+        getFavoriteArtworkUC.deliteFav(idArtwork: idArtwork, moc: moc, func: `func`)
+    }
+    
     func updateArtworks() {
-        print("updateArtworks()")
         getArtworksUC.execute { list in
             self.artworks += list
         }
     }
     
-    func updateSearchingArtworks() {
-        searchArtworksUC.execute(text: searchText) { list in
+    func updateIsHidden() -> Bool {
+        return searchArtworksUC.updateIsHidden()
+    }
+    
+    
+    func updateSearchingArtworks(){
+        return searchArtworksUC.execute(text: searchText) { list in
             self.artworks += list
         }
     }
@@ -57,4 +68,16 @@ class ArtworkListVM: ObservableObject {
             updateSearchingArtworks()
         }
     }
+    
+    func getMoreInfoArtwork(artworkIndex: Int) {
+        getMoreInfoArtworkUC.execute(artworkIndex: artworkIndex){ response in
+            let index = self.artworks.firstIndex { item in
+                return item.id == response.data.id
+            }
+            if let index {
+                self.artworks[index] = response.data
+            }
+        }
+    }
 }
+    

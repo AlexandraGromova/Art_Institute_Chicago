@@ -2,10 +2,8 @@ import Foundation
 
 class RemoteSource {
    func getArtworks(currentPage: Int, completion: @escaping (ArtworkResponse) -> ()) {
-        
         guard let url = URL(string: "https://api.artic.edu/api/v1/artworks?page=\(currentPage)")
         else {return}
-        
         URLSession.shared.dataTask(with: url) { (data, _, _) in
             let artworks = try! JSONDecoder().decode(ArtworkResponse.self, from: (data)!)
             DispatchQueue.main.async {
@@ -17,10 +15,8 @@ class RemoteSource {
     }
     
     func getSearchingArtworks(text: String, currentPage: Int, completion: @escaping (ArtworkResponse) -> ()){
-    
         guard let url = URL(string: "https://api.artic.edu/api/v1/artworks/search?q=\(text)&page=\(currentPage)")
         else {return}
-        
         URLSession.shared.dataTask(with: url) { (data, _, _) in
             let artworks = try! JSONDecoder().decode(ArtworkResponse.self, from: (data)!)
             DispatchQueue.main.async {
@@ -29,8 +25,20 @@ class RemoteSource {
             }
         }
         .resume()
-        
     }
+    
+    func getArtwork(artworkIndex: Int, completion: @escaping (ArtworkSearchResponse) -> ()) {
+         guard let url = URL(string: "https://api.artic.edu/api/v1/artworks/\(artworkIndex)")
+         else {return}
+         URLSession.shared.dataTask(with: url) { (data, _, _) in
+             let artwork = try! JSONDecoder().decode(ArtworkSearchResponse.self, from: (data)!)
+             DispatchQueue.main.async {
+//                 print(url)
+                 completion(artwork)
+             }
+         }
+         .resume()
+     }
     
     
     

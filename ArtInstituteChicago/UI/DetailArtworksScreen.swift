@@ -3,10 +3,11 @@ import SwiftUI
 struct DetailArtworksScreen: View {
     
     @Environment(\.presentationMode) var presentationMode
-
-    @State var isPlaying : Bool = false
+    @Environment(\.managedObjectContext) var moc
+    @FetchRequest(sortDescriptors: []) var artworksCD: FetchedResults<ArtworkCD>
+    
+    @State var isFavorite : Bool
     @State var artwork: Artwork
-    var vm = AppContainer.resolve(ArtworkLocalSource.self)
     
     var body: some View {
         VStack(alignment: .trailing) {
@@ -51,10 +52,37 @@ struct DetailArtworksScreen: View {
             }
             
             Button(action: {
-                self.isPlaying.toggle()
-               
+                if isFavorite == true{
+                    let isFavorited = artworksCD.contains { item in
+                        if  item.id_favorite == artwork.id?.formatted() ?? "0" {
+                            moc.delete(item)
+                            self.isFavorite.toggle()
+                            return false
+                        }
+                        return false
+                    }
+                    
+                }
+                else {
+                     
+                    let artworkCD = ArtworkCD(context: moc)
+                    artworkCD.id = UUID()
+                    artworkCD.artist_display = artwork.artist_display
+                    artworkCD.date_start = Int64(artwork.date_start ?? 0)
+                    artworkCD.image_id = artwork.image_id
+                    artworkCD.medium_display = artwork.medium_display
+                    artworkCD.place_of_origin = artwork.place_of_origin
+                    artworkCD.style_title = artwork.style_title
+                    artworkCD.id_favorite = artwork.id?.formatted() ?? "0"
+                    print("test_DetailArtworkScreen CD id favorite\(artworkCD.id_favorite) artwork_id \(artwork.id?.formatted() ?? "0")")
+                    artworkCD.title = artwork.title
+                    try? moc.save()
+                    self.isFavorite.toggle()
+                   
+                 
+                }
             }) {
-                Image(systemName: self.isPlaying == true ? "heart.circle.fill" : "heart.circle")
+                Image(systemName: self.isFavorite == true ? "heart.circle.fill" : "heart.circle")
                     .resizable()
                     .scaledToFit()
                     .tint(Color.darkGreen)
@@ -62,9 +90,6 @@ struct DetailArtworksScreen: View {
             }
             .frame(alignment: .bottomTrailing)
             .offset(x: -30, y: -50)
-        }
-        .onAppear(){
-            print(artwork.artist_display, artwork.place_of_origin, artwork.title)
         }
         .ignoresSafeArea()
         .setupScreen()

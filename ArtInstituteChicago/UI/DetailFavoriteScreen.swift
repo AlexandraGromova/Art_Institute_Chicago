@@ -5,7 +5,7 @@ struct DetailFavoriteScreen: View {
     
     @Environment(\.presentationMode) var presentationMode
 
-    @State var isPlaying : Bool = false
+    @State var isFavorite : Bool = false
     @State var artwork: ArtworkCD
     var vm = AppContainer.resolve(ArtworkLocalSource.self)
     
@@ -44,7 +44,7 @@ struct DetailFavoriteScreen: View {
                 VStack(){
                     InfoAboutArtwork(text: artwork.artist_display ?? "" , title: "Artist:")
                     InfoAboutArtwork(text: artwork.place_of_origin ?? "", title: "Place:")
-//                    InfoAboutArtwork(text: String(artwork.date_start ?? 0), title: "Date:")
+                    InfoAboutArtwork(text: "\(artwork.date_start)" , title: "Date:")
                     InfoAboutArtwork(text: artwork.medium_display ?? "", title: "Medium:")
                 }
                 .customAppleSDGothicNeoThin(size: 25)
@@ -52,10 +52,10 @@ struct DetailFavoriteScreen: View {
             }
             
             Button(action: {
-                self.isPlaying.toggle()
+                self.isFavorite.toggle()
                
             }) {
-                Image(systemName: self.isPlaying == true ? "heart.circle.fill" : "heart.circle")
+                Image(systemName: self.isFavorite == true ? "heart.circle.fill" : "heart.circle")
                     .resizable()
                     .scaledToFit()
                     .tint(Color.darkGreen)

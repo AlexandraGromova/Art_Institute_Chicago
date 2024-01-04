@@ -11,26 +11,21 @@ struct FavoritesScreen: View {
     var body: some View {
         VStack() {
             ScrollView(showsIndicators: false) {
-                    VStack(alignment: .leading, spacing: 0){
-                        ForEach(Array(zip(artworksCD.indices, artworksCD)), id: \.1.id) { index, artwork in
+                VStack(alignment: .leading, spacing: 0){
+                    ForEach(Array(zip(artworksCD.indices, artworksCD)), id: \.1.id) { index, artwork in
                         NavigationLink {
                             DetailFavoriteScreen(artwork: artwork)
                         } label: {
                             ArtworksListFavCell(artworkTitle: artwork.title ?? "", id: artwork.id_favorite ?? "")
                                 .listRowSeparator(.hidden)
                         }
-                            Spacer()
-                                .frame(height: 15)
+                        Spacer()
+                            .frame(height: 15)
                     }
                 }
-         
             }
-            Button("Clean"){
-                print("clean")
-                for _ in artworksCD {
-                    let artworkCD = artworksCD[artworksCD.indices.lowerBound]
-                    moc.delete(artworkCD)
-                   }
+            Button("clean"){
+                moc.delete(artworksCD[artworksCD.startIndex])
             }
             Spacer()
                 .frame(height: 20)

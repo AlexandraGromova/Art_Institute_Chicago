@@ -7,6 +7,7 @@ struct ArtworkResponse: Codable, Hashable {
 struct Artwork: Codable, Identifiable, Hashable {
     var id : Int?
     var image_id : String?
+    var api_link : String?
     var title : String?
     var place_of_origin : String?
     var date_start : Int?
@@ -20,3 +21,8 @@ struct Pagination: Codable, Hashable {
     var current_page: Int?
     var total_pages: Int?
 }
+struct ArtworkSearchResponse: Codable, Hashable {
+    var data: Artwork
+}
+
+

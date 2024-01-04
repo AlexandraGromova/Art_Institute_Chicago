@@ -1,5 +1,7 @@
 import Foundation
+import SwiftUI
 import Combine
+import CoreData
 
 class ArtworkRepository {
     let remoteSource: RemoteSource
@@ -13,16 +15,16 @@ class ArtworkRepository {
     func getArtworks(currentPage: Int, completion: @escaping (ArtworkResponse) -> ()) {
         remoteSource.getArtworks(currentPage: currentPage, completion: completion)
     }
+    func getArtwork(artworkIndex: Int, completion: @escaping (ArtworkSearchResponse) -> ()) {
+        remoteSource.getArtwork(artworkIndex: artworkIndex, completion: completion)
+    }
     
     func getSearchingArtworks(text: String, currentPage: Int, completion: @escaping (ArtworkResponse) -> ()){
         remoteSource.getSearchingArtworks(text: text, currentPage: currentPage, completion: completion)
     }
     
     
-//    func updateArtworks() -> AnyPublisher<[ArtWork], Never> {
-//        remoteSource.getArtworks { list in
-//            self.localSource.saveArtworks(list: list)
-//        }
-//        return localSource.observeArtworks()
-//    }
+    
+    
+    
 }
