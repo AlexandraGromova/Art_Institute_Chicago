@@ -4,21 +4,23 @@ import Combine
 class ArtworkListVM: ObservableObject {
     
     @Published var artworks: [Artwork] = []
+    @Published var artworksCD: [Artwork] = []
     @Published var isSearchMode = false
     
     private let getArtworksUC : GetArtworksUC
     private let searchArtworksUC : SearchArtworksUC
     private let getMoreInfoArtworkUC : GetMoreInfoArtworkUC
-    private let getFavoriteArtworkUC : GetFavoriteArtworkUC
+    private let repository : ArtworkRepository
     
     private var cancelable = Set<AnyCancellable>()
     private var searchText = ""
     
-    init(getArtworksUC : GetArtworksUC, searchArtworksUC: SearchArtworksUC, getMoreInfoArtworkUC : GetMoreInfoArtworkUC, getFavoriteArtworkUC : GetFavoriteArtworkUC) {
+    init(getArtworksUC : GetArtworksUC, searchArtworksUC: SearchArtworksUC, getMoreInfoArtworkUC : GetMoreInfoArtworkUC, repository : ArtworkRepository) {
         self.getArtworksUC = getArtworksUC
         self.searchArtworksUC = searchArtworksUC
         self.getMoreInfoArtworkUC = getMoreInfoArtworkUC
-        self.getFavoriteArtworkUC = getFavoriteArtworkUC
+        self.repository = repository
+        
         
         $isSearchMode
             .receive(on: RunLoop.main)
@@ -32,10 +34,7 @@ class ArtworkListVM: ObservableObject {
             }
             .store(in: &cancelable)
     }
-    
-    func deliteFevorite(idArtwork : String, moc: Any, func: () -> ()){
-        getFavoriteArtworkUC.deliteFav(idArtwork: idArtwork, moc: moc, func: `func`)
-    }
+
     
     func updateArtworks() {
         getArtworksUC.execute { list in
@@ -69,8 +68,8 @@ class ArtworkListVM: ObservableObject {
         }
     }
     
-    func getMoreInfoArtwork(artworkIndex: Int) {
-        getMoreInfoArtworkUC.execute(artworkIndex: artworkIndex){ response in
+    func getMoreInfoArtwork(artworkId: Int) {
+        getMoreInfoArtworkUC.execute(artworkId: artworkId){ response in
             let index = self.artworks.firstIndex { item in
                 return item.id == response.data.id
             }
@@ -78,6 +77,38 @@ class ArtworkListVM: ObservableObject {
                 self.artworks[index] = response.data
             }
         }
+    }
+    
+    func saveSearchArtwork(artworkId: Int){
+        getMoreInfoArtworkUC.execute(artworkId: artworkId){ response in
+            let index = self.artworks.firstIndex { item in
+                return item.id == response.data.id
+            }
+            if let index {
+                self.artworks[index] = response.data
+                self.saveArtwork(artwork: self.artworks[index])
+            }
+        }
+        print("saveSearchArtwork")
+    }
+    
+    func saveArtwork(artwork: Artwork) {
+        repository.saveArtwork(artwork: artwork)
+    }
+    
+    var counter = 0
+    
+    func getFavoritsSubscription(){
+        let list = repository.getFavorites()
+        artworksCD = list.map({ item in
+            return Artwork(id: Int(item.id_favorite), image_id: item.image_id, api_link: "", title: item.title, place_of_origin: item.place_of_origin, date_start: Int(item.date_start), artist_display: item.artist_display, style_title: item.style_title, medium_display: item.medium_display)
+        })
+    }
+
+    
+    
+    func deleteFavorite(artworkId: Int) {
+        repository.deleteFavorite(artworkId: artworkId)
     }
 }
     

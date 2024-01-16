@@ -48,8 +48,6 @@ class ArtworkLocalSource {
         let image = UIImage(data: decoded)
         return image
     }
-    
-    
 }
 
 extension UserDefaults {

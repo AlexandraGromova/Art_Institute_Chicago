@@ -1,5 +1,6 @@
 import Foundation
 import Swinject
+import CoreData
 
 class AppContainer {
     static private let container = Container()
@@ -12,10 +13,10 @@ class AppContainer {
             ArtworkLocalSource()
         }
         container.register(ArtworkRepository.self) { r in
-            ArtworkRepository(source: r.resolve(RemoteSource.self)!, localSource: r.resolve(ArtworkLocalSource.self)!)
+            ArtworkRepository(source: r.resolve(RemoteSource.self)!, localSource: r.resolve(ArtworkLocalSource.self)!, dataArtworksService: r.resolve(DataArtworksService.self)!)
         }
         container.register(ArtworkListVM.self) { r in
-            ArtworkListVM(getArtworksUC: r.resolve(GetArtworksUC.self)!, searchArtworksUC: r.resolve(SearchArtworksUC.self)!, getMoreInfoArtworkUC: r.resolve(GetMoreInfoArtworkUC.self)!, getFavoriteArtworkUC: r.resolve(GetFavoriteArtworkUC.self)!)
+            ArtworkListVM(getArtworksUC: r.resolve(GetArtworksUC.self)!, searchArtworksUC: r.resolve(SearchArtworksUC.self)!, getMoreInfoArtworkUC: r.resolve(GetMoreInfoArtworkUC.self)!,  repository: r.resolve(ArtworkRepository.self)!)
         }
         container.register(InfoVM.self) { r in
             InfoVM()
@@ -31,8 +32,14 @@ class AppContainer {
             GetMoreInfoArtworkUC(repository: r.resolve(ArtworkRepository.self)!)
         }
         
-        container.register(GetFavoriteArtworkUC.self) { r in
-            GetFavoriteArtworkUC()
+        container.register(DataArtworksService.self) { r in
+            DataArtworksService()
+        }
+        container.register(FavoritesVM.self) { r in
+            FavoritesVM(repository: r.resolve(ArtworkRepository.self)!)
+        }
+        container.register(DetailArtworkVM.self) { r in
+            DetailArtworkVM(repository: r.resolve(ArtworkRepository.self)!, getMoreInfoArtworkUC: r.resolve(GetMoreInfoArtworkUC.self)!)
         }
         
     }

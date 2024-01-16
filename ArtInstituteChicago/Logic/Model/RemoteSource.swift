@@ -7,7 +7,7 @@ class RemoteSource {
         URLSession.shared.dataTask(with: url) { (data, _, _) in
             let artworks = try! JSONDecoder().decode(ArtworkResponse.self, from: (data)!)
             DispatchQueue.main.async {
-                print(url)
+//                print(url)
                 completion(artworks)
             }
         }
@@ -20,20 +20,21 @@ class RemoteSource {
         URLSession.shared.dataTask(with: url) { (data, _, _) in
             let artworks = try! JSONDecoder().decode(ArtworkResponse.self, from: (data)!)
             DispatchQueue.main.async {
-                print(url)
+//                print(url)
                 completion(artworks)
             }
         }
         .resume()
     }
     
-    func getArtwork(artworkIndex: Int, completion: @escaping (ArtworkSearchResponse) -> ()) {
-         guard let url = URL(string: "https://api.artic.edu/api/v1/artworks/\(artworkIndex)")
+    func getArtwork(artworkId: Int, completion: @escaping (ArtworkSearchResponse) -> ()) {
+         guard let url = URL(string: "https://api.artic.edu/api/v1/artworks/\(artworkId)")
          else {return}
          URLSession.shared.dataTask(with: url) { (data, _, _) in
              let artwork = try! JSONDecoder().decode(ArtworkSearchResponse.self, from: (data)!)
              DispatchQueue.main.async {
-//                 print(url)
+                 print("getArtwork_RemoutSourse")
+                 print(url)
                  completion(artwork)
              }
          }

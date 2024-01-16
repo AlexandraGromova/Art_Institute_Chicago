@@ -4,7 +4,7 @@
         <attribute name="artist_display" optional="YES" attributeType="String"/>
         <attribute name="date_start" optional="YES" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES"/>
         <attribute name="id" optional="YES" attributeType="UUID" usesScalarValueType="NO"/>
-        <attribute name="id_favorite" optional="YES" attributeType="String"/>
+        <attribute name="id_favorite" optional="YES" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES"/>
         <attribute name="image_id" optional="YES" attributeType="String"/>
         <attribute name="medium_display" optional="YES" attributeType="String"/>
         <attribute name="place_of_origin" optional="YES" attributeType="String"/>

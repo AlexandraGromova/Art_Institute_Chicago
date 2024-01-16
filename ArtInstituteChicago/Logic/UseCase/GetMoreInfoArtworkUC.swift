@@ -8,7 +8,8 @@ class GetMoreInfoArtworkUC {
         self.repository = repository
     }
     
-    func execute(artworkIndex: Int, completion: @escaping (ArtworkSearchResponse) -> ()) {
-        repository.getArtwork(artworkIndex: artworkIndex, completion: completion)
+    func execute(artworkId: Int, completion: @escaping (ArtworkSearchResponse) -> ()) {
+        print("test_GetMoreInfoArtworkUC_execute")
+        repository.getArtwork(artworkId: artworkId, completion: completion)
     }
 }

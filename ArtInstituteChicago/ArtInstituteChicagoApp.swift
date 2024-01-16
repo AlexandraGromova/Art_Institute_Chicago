@@ -2,7 +2,7 @@ import SwiftUI
 
 @main
 struct ArtInstituteChicagoApp: App {
-    @StateObject private var dataController = DataController()
+//    @StateObject private var persistentContainer = PersistentContainer()
 
     init() {
         AppContainer.setup()
@@ -11,7 +11,8 @@ struct ArtInstituteChicagoApp: App {
         WindowGroup {
 //            ContentView()
 //                         .environment(\.managedObjectContext, dataController.container.viewContext)
-            MainScreen().environment(\.managedObjectContext, dataController.container.viewContext)
+//            MainScreen().environment(\.managedObjectContext, persistentContainer.container.viewContext)
+            MainScreen()
 //            InfoScreen()
 //            StartingScreen()
 //            SettingsScreen()

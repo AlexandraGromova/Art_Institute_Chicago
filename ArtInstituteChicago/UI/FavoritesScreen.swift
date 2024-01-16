@@ -1,36 +1,38 @@
-import Foundation
 import SwiftUI
+import Foundation
 import CoreData
 
 struct FavoritesScreen: View {
     
     @Environment(\.presentationMode) var presentationMode
-    @Environment(\.managedObjectContext) var moc
-    @FetchRequest(sortDescriptors: []) var artworksCD: FetchedResults<ArtworkCD>
+    @StateObject var vm = AppContainer.resolve(FavoritesVM.self)
     
     var body: some View {
         VStack() {
             ScrollView(showsIndicators: false) {
-                VStack(alignment: .leading, spacing: 0){
-                    ForEach(Array(zip(artworksCD.indices, artworksCD)), id: \.1.id) { index, artwork in
+                LazyVStack(spacing: 0) {
+                    ForEach(Array(zip(vm.artworksCD.indices, vm.artworksCD)), id: \.1.id) { index, artwork in
                         NavigationLink {
-                            DetailFavoriteScreen(artwork: artwork)
+                            DetailArtworksScreen(isFavorite: true, artwork: artwork) 
                         } label: {
-                            ArtworksListFavCell(artworkTitle: artwork.title ?? "", id: artwork.id_favorite ?? "")
-                                .listRowSeparator(.hidden)
+                            ArtworksListFavCell(artworkTitle: artwork.title ?? "", id: artwork.id ?? 0)
+                            }
+                        .onAppear(){
+                            print("test_FavoritesScreen_artwork = \(artwork.title), \(artwork.place_of_origin)")
                         }
                         Spacer()
                             .frame(height: 15)
+                        }
                     }
+                    Spacer()
+                        .frame(height: 20)
                 }
-            }
-            Button("clean"){
-                moc.delete(artworksCD[artworksCD.startIndex])
-            }
-            Spacer()
-                .frame(height: 20)
+        }
+        .onAppear() {
+            vm.getFavoritsSubscription()
         }
         .setupScreen()
+        .listStyle(PlainListStyle())
         .navigationBarItems(leading:
                                 Button(action: {
             self.presentationMode.wrappedValue.dismiss()
@@ -46,11 +48,8 @@ struct FavoritesScreen: View {
 
 struct ArtworksListFavCell: View {
     
-    @Environment(\.managedObjectContext) var moc
-    @FetchRequest(sortDescriptors: []) var artworksCD: FetchedResults<ArtworkCD>
-    
     var artworkTitle: String
-    var id: String
+    var id: Int
     var body: some View {
         HStack() {
             VStack(alignment: .leading) {
@@ -60,7 +59,7 @@ struct ArtworksListFavCell: View {
                     .lineLimit(1)
                 Spacer()
                     .frame(height: 10)
-                Text(id)
+                Text("\(id)")
                     .customAppleSDGothicNeoThin(size: 20)
                     .frame(alignment: .center)
                     .multilineTextAlignment(.leading)
