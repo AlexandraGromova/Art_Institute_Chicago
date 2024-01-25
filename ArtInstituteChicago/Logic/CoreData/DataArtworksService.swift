@@ -36,9 +36,6 @@ class DataArtworksService{
             catch{
                 print("Failed to save artwork to core data: \(error)")
             }
-            
-            
-            
         }
     }
     func delete(artworkId: Int) {

@@ -21,7 +21,6 @@ struct SearchView: View {
                 .foregroundColor(Color.darkGreen)
                 .onTapGesture {
                     actionSearch(searchText)
-//                    print("search")
                 }
             Spacer()
                 .frame(width: 30)
@@ -32,7 +31,6 @@ struct SearchView: View {
         .onChange(of: searchText) { newValue in
             if searchText.isEmpty {
                 actionSearch(nil)
-                //perekluchat na vm.isSearchMode = false & obnovit stranici
             }
         }
     }

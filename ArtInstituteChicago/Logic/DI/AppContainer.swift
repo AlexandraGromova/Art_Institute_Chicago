@@ -31,7 +31,6 @@ class AppContainer {
         container.register(GetMoreInfoArtworkUC.self) { r in
             GetMoreInfoArtworkUC(repository: r.resolve(ArtworkRepository.self)!)
         }
-        
         container.register(DataArtworksService.self) { r in
             DataArtworksService()
         }
@@ -41,7 +40,24 @@ class AppContainer {
         container.register(DetailArtworkVM.self) { r in
             DetailArtworkVM(repository: r.resolve(ArtworkRepository.self)!, getMoreInfoArtworkUC: r.resolve(GetMoreInfoArtworkUC.self)!)
         }
-        
+        container.register(ExhibitionRepository.self) { r in
+            ExhibitionRepository(remoteSource: r.resolve(RemoteSource.self)!)
+        }
+        container.register(ExhibitionsVM.self) { r in
+            ExhibitionsVM(repository: r.resolve(ExhibitionRepository.self)!, getExhibitionsUC: r.resolve(GetExhibitionsUC.self)!)
+        }
+        container.register(GetExhibitionsUC.self) { r in
+            GetExhibitionsUC(repository: r.resolve(ExhibitionRepository.self)!)
+        }
+        container.register(EventRepository.self) { r in
+            EventRepository(remoteSource:  r.resolve(RemoteSource.self)!)
+        }
+        container.register(GetEventsUC.self) { r in
+            GetEventsUC(repository: r.resolve(EventRepository.self)!)
+        }
+        container.register(EventsVM.self) { r in
+            EventsVM(getEventsUC: r.resolve(GetEventsUC.self)!)
+        }
     }
     
     static func resolve<T>(_ serviceType: T.Type) -> T {

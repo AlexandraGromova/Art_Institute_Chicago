@@ -4,7 +4,6 @@ import SwiftUI
 struct MainScreen: View {
     
     var vm = AppContainer.resolve(ArtworkLocalSource.self)
-//    @StateObject private var dataController = DataController()
     
     var body: some View {
         NavigationStack {
@@ -72,14 +71,18 @@ struct MainScreen: View {
                         }
                           Spacer()
                     }
-                    MainButton(title: LocalizedStringKey("events"), imageWidth: Int(UIScreen.main.bounds.size.width) - 25, imageHeight: 150,  isLarge: true)
+                    NavigationLink {
+                        EventsLIstScreen()
+                    } label: {
+                        MainButton(title: LocalizedStringKey("events"), imageWidth: Int(UIScreen.main.bounds.size.width) - 25, imageHeight: 150,  isLarge: true)
+                    }
                     NavigationLink {
                         ArtworksListScreen()
                     } label: {
                         MainButton(title: LocalizedStringKey("artworks"), imageWidth: Int(UIScreen.main.bounds.size.width) - 25, imageHeight: 100)
                     }
                     NavigationLink {
-                        UserProfileScreen()
+                        ExhibitionsListScreen()
                     } label: {
                         MainButton(title: LocalizedStringKey("exhibitions"), imageWidth: Int(UIScreen.main.bounds.size.width) - 25, imageHeight: 100)
                     }

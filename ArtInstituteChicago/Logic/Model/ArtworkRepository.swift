@@ -19,7 +19,6 @@ class ArtworkRepository {
     }
 
     func getArtwork(artworkId: Int, completion: @escaping (ArtworkSearchResponse) -> ()) {
-        print("test_ArtworkRepository_getArtwork")
         remoteSource.getArtwork(artworkId: artworkId, completion: completion)
     }
     

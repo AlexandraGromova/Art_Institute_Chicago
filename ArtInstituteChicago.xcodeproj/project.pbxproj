@@ -39,11 +39,24 @@
 		D9A1D3ED2ABC35D200AFBE5A /* FavoritesScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9A1D3EC2ABC35D200AFBE5A /* FavoritesScreen.swift */; };
 		D9A1D3F02ABC57A600AFBE5A /* FavoritesVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9A1D3EF2ABC57A600AFBE5A /* FavoritesVM.swift */; };
 		D9A4CED52AAA6104000AE2BF /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = D9A4CED42AAA6104000AE2BF /* Localizable.strings */; };
+		D9A4F7F72B591D9D00069B63 /* Exhibition.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9A4F7F62B591D9D00069B63 /* Exhibition.swift */; };
+		D9A4F7F92B59324B00069B63 /* ExhibitionRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9A4F7F82B59324B00069B63 /* ExhibitionRepository.swift */; };
+		D9A4F7FF2B5A858D00069B63 /* ShimmerLoading.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9A4F7FE2B5A858D00069B63 /* ShimmerLoading.swift */; };
+		D9A4F8012B5AC2E300069B63 /* GetExhibitionsUC.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9A4F8002B5AC2E300069B63 /* GetExhibitionsUC.swift */; };
+		D9A85F552B5C15A6001E8E5F /* DetailExhibitionScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9A85F542B5C15A6001E8E5F /* DetailExhibitionScreen.swift */; };
+		D9A85F572B5C5313001E8E5F /* DateFormating.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9A85F562B5C5313001E8E5F /* DateFormating.swift */; };
+		D9A85F592B5EDC5B001E8E5F /* Event.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9A85F582B5EDC5B001E8E5F /* Event.swift */; };
+		D9A85F5B2B5EEBC4001E8E5F /* EventRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9A85F5A2B5EEBC4001E8E5F /* EventRepository.swift */; };
+		D9A85F5D2B5EEC38001E8E5F /* EventsVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9A85F5C2B5EEC38001E8E5F /* EventsVM.swift */; };
+		D9A85F5F2B5EEC6F001E8E5F /* EventsLIstScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9A85F5E2B5EEC6F001E8E5F /* EventsLIstScreen.swift */; };
+		D9A85F612B5EED39001E8E5F /* GetEventsUC.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9A85F602B5EED39001E8E5F /* GetEventsUC.swift */; };
 		D9BBA0822B39855700A73D34 /* SearchView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9BBA0812B39855700A73D34 /* SearchView.swift */; };
 		D9BBA0842B399D0400A73D34 /* SearchArtworksUC.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9BBA0832B399D0400A73D34 /* SearchArtworksUC.swift */; };
 		D9BBA0862B3F339E00A73D34 /* GetMoreInfoArtworkUC.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9BBA0852B3F339D00A73D34 /* GetMoreInfoArtworkUC.swift */; };
 		D9BBA08A2B474E1900A73D34 /* DataArtworksService.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9BBA0892B474E1900A73D34 /* DataArtworksService.swift */; };
 		D9C06F9A2B5555FE00A61EBC /* DetailArtworkVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9C06F992B5555FE00A61EBC /* DetailArtworkVM.swift */; };
+		D9C06F9C2B56D1E200A61EBC /* ExhibitionsListScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9C06F9B2B56D1E200A61EBC /* ExhibitionsListScreen.swift */; };
+		D9C06F9E2B56D22600A61EBC /* ExhibitionsVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9C06F9D2B56D22600A61EBC /* ExhibitionsVM.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -99,11 +112,24 @@
 		D9A1D3EC2ABC35D200AFBE5A /* FavoritesScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoritesScreen.swift; sourceTree = "<group>"; };
 		D9A1D3EF2ABC57A600AFBE5A /* FavoritesVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoritesVM.swift; sourceTree = "<group>"; };
 		D9A4CED42AAA6104000AE2BF /* Localizable.strings */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; path = Localizable.strings; sourceTree = "<group>"; };
+		D9A4F7F62B591D9D00069B63 /* Exhibition.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Exhibition.swift; sourceTree = "<group>"; };
+		D9A4F7F82B59324B00069B63 /* ExhibitionRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExhibitionRepository.swift; sourceTree = "<group>"; };
+		D9A4F7FE2B5A858D00069B63 /* ShimmerLoading.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShimmerLoading.swift; sourceTree = "<group>"; };
+		D9A4F8002B5AC2E300069B63 /* GetExhibitionsUC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetExhibitionsUC.swift; sourceTree = "<group>"; };
+		D9A85F542B5C15A6001E8E5F /* DetailExhibitionScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailExhibitionScreen.swift; sourceTree = "<group>"; };
+		D9A85F562B5C5313001E8E5F /* DateFormating.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateFormating.swift; sourceTree = "<group>"; };
+		D9A85F582B5EDC5B001E8E5F /* Event.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Event.swift; sourceTree = "<group>"; };
+		D9A85F5A2B5EEBC4001E8E5F /* EventRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventRepository.swift; sourceTree = "<group>"; };
+		D9A85F5C2B5EEC38001E8E5F /* EventsVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventsVM.swift; sourceTree = "<group>"; };
+		D9A85F5E2B5EEC6F001E8E5F /* EventsLIstScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventsLIstScreen.swift; sourceTree = "<group>"; };
+		D9A85F602B5EED39001E8E5F /* GetEventsUC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetEventsUC.swift; sourceTree = "<group>"; };
 		D9BBA0812B39855700A73D34 /* SearchView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchView.swift; sourceTree = "<group>"; };
 		D9BBA0832B399D0400A73D34 /* SearchArtworksUC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchArtworksUC.swift; sourceTree = "<group>"; };
 		D9BBA0852B3F339D00A73D34 /* GetMoreInfoArtworkUC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetMoreInfoArtworkUC.swift; sourceTree = "<group>"; };
 		D9BBA0892B474E1900A73D34 /* DataArtworksService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataArtworksService.swift; sourceTree = "<group>"; };
 		D9C06F992B5555FE00A61EBC /* DetailArtworkVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailArtworkVM.swift; sourceTree = "<group>"; };
+		D9C06F9B2B56D1E200A61EBC /* ExhibitionsListScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExhibitionsListScreen.swift; sourceTree = "<group>"; };
+		D9C06F9D2B56D22600A61EBC /* ExhibitionsVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExhibitionsVM.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -142,6 +168,7 @@
 		D98F0F2B2AA1B7D6005AB694 /* Logic */ = {
 			isa = PBXGroup;
 			children = (
+				D99E70052AF16A8B00725719 /* CoreData */,
 				D9A0CF7C2AC312CB008B4FF5 /* UseCase */,
 				D98F0F382AA1C80F005AB694 /* ViewModel */,
 				D98F0F362AA1C7AB005AB694 /* Model */,
@@ -159,9 +186,12 @@
 				D94F7F0E2AA91D3E002E064F /* InfoScreen.swift */,
 				D99BA6E12AABACE20083A179 /* UserProfileScreen.swift */,
 				D9A1D3EC2ABC35D200AFBE5A /* FavoritesScreen.swift */,
+				D9A85F5E2B5EEC6F001E8E5F /* EventsLIstScreen.swift */,
 				D99D81712A798A4200F6278E /* ArtworksListScreen.swift */,
 				D9BBA0812B39855700A73D34 /* SearchView.swift */,
 				D99D81A52A81305800F6278E /* DetailArtworksScreen.swift */,
+				D9C06F9B2B56D1E200A61EBC /* ExhibitionsListScreen.swift */,
+				D9A85F542B5C15A6001E8E5F /* DetailExhibitionScreen.swift */,
 				D9A1D3EE2ABC3A8200AFBE5A /* Game */,
 				D9A1D3E92AB8E18800AFBE5A /* RepresentableComponents */,
 				D9A4CED62AAA6711000AE2BF /* ExtensionUI */,
@@ -181,6 +211,8 @@
 			isa = PBXGroup;
 			children = (
 				D98F0F312AA1BA06005AB694 /* ArtworkRepository.swift */,
+				D9A85F5A2B5EEBC4001E8E5F /* EventRepository.swift */,
+				D9A4F7F82B59324B00069B63 /* ExhibitionRepository.swift */,
 				D99D819C2A79B9EC00F6278E /* RemoteSource.swift */,
 				D98F0F372AA1C7B6005AB694 /* DTO */,
 				D98F0F392AA1C8E0005AB694 /* ArtworksLocalSource.swift */,
@@ -192,6 +224,8 @@
 			isa = PBXGroup;
 			children = (
 				D99D819A2A79A13900F6278E /* Artwork.swift */,
+				D9A85F582B5EDC5B001E8E5F /* Event.swift */,
+				D9A4F7F62B591D9D00069B63 /* Exhibition.swift */,
 			);
 			path = DTO;
 			sourceTree = "<group>";
@@ -201,6 +235,8 @@
 			children = (
 				D98F0F2F2AA1B991005AB694 /* ArtworkListVM.swift */,
 				D9C06F992B5555FE00A61EBC /* DetailArtworkVM.swift */,
+				D9A85F5C2B5EEC38001E8E5F /* EventsVM.swift */,
+				D9C06F9D2B56D22600A61EBC /* ExhibitionsVM.swift */,
 				D9A1D3EF2ABC57A600AFBE5A /* FavoritesVM.swift */,
 				D9A1D3EA2AB99F0E00AFBE5A /* InfoVM.swift */,
 			);
@@ -234,7 +270,6 @@
 				D98F0F2C2AA1B7E7005AB694 /* UI */,
 				D98F0F2B2AA1B7D6005AB694 /* Logic */,
 				D99D816F2A798A4200F6278E /* ArtInstituteChicagoApp.swift */,
-				D99E70052AF16A8B00725719 /* CoreData */,
 				D9A4CED42AAA6104000AE2BF /* Localizable.strings */,
 				D99D81732A798A4400F6278E /* Assets.xcassets */,
 				D99D81752A798A4400F6278E /* ArtInstituteChicago.entitlements */,
@@ -282,6 +317,8 @@
 			isa = PBXGroup;
 			children = (
 				D9A0CF7D2AC31349008B4FF5 /* GetArtworksUC.swift */,
+				D9A4F8002B5AC2E300069B63 /* GetExhibitionsUC.swift */,
+				D9A85F602B5EED39001E8E5F /* GetEventsUC.swift */,
 				D9BBA0852B3F339D00A73D34 /* GetMoreInfoArtworkUC.swift */,
 				D9BBA0832B399D0400A73D34 /* SearchArtworksUC.swift */,
 			);
@@ -292,6 +329,7 @@
 			isa = PBXGroup;
 			children = (
 				D99BA6E92AB227EA0083A179 /* ImagePicker.swift */,
+				D9A85F562B5C5313001E8E5F /* DateFormating.swift */,
 			);
 			path = RepresentableComponents;
 			sourceTree = "<group>";
@@ -309,6 +347,7 @@
 			isa = PBXGroup;
 			children = (
 				D99D819E2A7DEAF100F6278E /* Color.swift */,
+				D9A4F7FE2B5A858D00069B63 /* ShimmerLoading.swift */,
 				D98F0F292A9FCBD2005AB694 /* Custom.swift */,
 			);
 			path = ExtensionUI;
@@ -457,28 +496,41 @@
 				D99BA6E22AABACE20083A179 /* UserProfileScreen.swift in Sources */,
 				D9A1D3F02ABC57A600AFBE5A /* FavoritesVM.swift in Sources */,
 				D9C06F9A2B5555FE00A61EBC /* DetailArtworkVM.swift in Sources */,
+				D9A4F7F72B591D9D00069B63 /* Exhibition.swift in Sources */,
 				D99D819F2A7DEAF100F6278E /* Color.swift in Sources */,
+				D9A85F572B5C5313001E8E5F /* DateFormating.swift in Sources */,
+				D9A85F612B5EED39001E8E5F /* GetEventsUC.swift in Sources */,
 				D99BA6EA2AB227EA0083A179 /* ImagePicker.swift in Sources */,
 				D99D819B2A79A13900F6278E /* Artwork.swift in Sources */,
 				D94F7F0F2AA91D3E002E064F /* InfoScreen.swift in Sources */,
 				D98F0F3A2AA1C8E0005AB694 /* ArtworksLocalSource.swift in Sources */,
+				D9A4F8012B5AC2E300069B63 /* GetExhibitionsUC.swift in Sources */,
+				D9A4F7FF2B5A858D00069B63 /* ShimmerLoading.swift in Sources */,
 				D99BA6E82AB0546C0083A179 /* StartingScreen.swift in Sources */,
 				D98F0F2A2A9FCBD3005AB694 /* Custom.swift in Sources */,
+				D9A85F5F2B5EEC6F001E8E5F /* EventsLIstScreen.swift in Sources */,
 				D9BBA08A2B474E1900A73D34 /* DataArtworksService.swift in Sources */,
 				D99BA6E62AAFC2810083A179 /* FlashCardsScreen.swift in Sources */,
 				D99E70042AF15ABC00725719 /* Model.xcdatamodeld in Sources */,
 				D99D81A62A81305800F6278E /* DetailArtworksScreen.swift in Sources */,
+				D9A85F5B2B5EEBC4001E8E5F /* EventRepository.swift in Sources */,
 				D99BA6EE2AB520800083A179 /* SettingsScreen.swift in Sources */,
+				D9C06F9C2B56D1E200A61EBC /* ExhibitionsListScreen.swift in Sources */,
 				D9A0CF7E2AC31349008B4FF5 /* GetArtworksUC.swift in Sources */,
+				D9A85F5D2B5EEC38001E8E5F /* EventsVM.swift in Sources */,
 				D99D81722A798A4200F6278E /* ArtworksListScreen.swift in Sources */,
 				D98F0F322AA1BA06005AB694 /* ArtworkRepository.swift in Sources */,
+				D9A85F592B5EDC5B001E8E5F /* Event.swift in Sources */,
 				D9A1D3EB2AB99F0E00AFBE5A /* InfoVM.swift in Sources */,
 				D99D819D2A79B9EC00F6278E /* RemoteSource.swift in Sources */,
+				D9C06F9E2B56D22600A61EBC /* ExhibitionsVM.swift in Sources */,
 				D9BBA0822B39855700A73D34 /* SearchView.swift in Sources */,
 				D99BA6E42AAF7EA20083A179 /* GameMainScreen.swift in Sources */,
 				D94F7F0D2AA8B93E002E064F /* MainScreen.swift in Sources */,
 				D99E701B2AF4511300725719 /* PersistentContainer.swift in Sources */,
 				D9A1D3ED2ABC35D200AFBE5A /* FavoritesScreen.swift in Sources */,
+				D9A85F552B5C15A6001E8E5F /* DetailExhibitionScreen.swift in Sources */,
+				D9A4F7F92B59324B00069B63 /* ExhibitionRepository.swift in Sources */,
 				D9BBA0862B3F339E00A73D34 /* GetMoreInfoArtworkUC.swift in Sources */,
 				D98F0F302AA1B991005AB694 /* ArtworkListVM.swift in Sources */,
 				D99D81702A798A4200F6278E /* ArtInstituteChicagoApp.swift in Sources */,
