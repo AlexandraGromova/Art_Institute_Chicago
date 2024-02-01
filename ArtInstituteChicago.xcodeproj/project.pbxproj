@@ -50,6 +50,9 @@
 		D9A85F5D2B5EEC38001E8E5F /* EventsVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9A85F5C2B5EEC38001E8E5F /* EventsVM.swift */; };
 		D9A85F5F2B5EEC6F001E8E5F /* EventsLIstScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9A85F5E2B5EEC6F001E8E5F /* EventsLIstScreen.swift */; };
 		D9A85F612B5EED39001E8E5F /* GetEventsUC.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9A85F602B5EED39001E8E5F /* GetEventsUC.swift */; };
+		D9A85F652B63DD6D001E8E5F /* UserLocalSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9A85F642B63DD6D001E8E5F /* UserLocalSource.swift */; };
+		D9A85F672B63DE41001E8E5F /* UserVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9A85F662B63DE41001E8E5F /* UserVM.swift */; };
+		D9A85F692B63DE5F001E8E5F /* UserRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9A85F682B63DE5F001E8E5F /* UserRepository.swift */; };
 		D9BBA0822B39855700A73D34 /* SearchView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9BBA0812B39855700A73D34 /* SearchView.swift */; };
 		D9BBA0842B399D0400A73D34 /* SearchArtworksUC.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9BBA0832B399D0400A73D34 /* SearchArtworksUC.swift */; };
 		D9BBA0862B3F339E00A73D34 /* GetMoreInfoArtworkUC.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9BBA0852B3F339D00A73D34 /* GetMoreInfoArtworkUC.swift */; };
@@ -123,6 +126,9 @@
 		D9A85F5C2B5EEC38001E8E5F /* EventsVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventsVM.swift; sourceTree = "<group>"; };
 		D9A85F5E2B5EEC6F001E8E5F /* EventsLIstScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventsLIstScreen.swift; sourceTree = "<group>"; };
 		D9A85F602B5EED39001E8E5F /* GetEventsUC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetEventsUC.swift; sourceTree = "<group>"; };
+		D9A85F642B63DD6D001E8E5F /* UserLocalSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserLocalSource.swift; sourceTree = "<group>"; };
+		D9A85F662B63DE41001E8E5F /* UserVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserVM.swift; sourceTree = "<group>"; };
+		D9A85F682B63DE5F001E8E5F /* UserRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserRepository.swift; sourceTree = "<group>"; };
 		D9BBA0812B39855700A73D34 /* SearchView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchView.swift; sourceTree = "<group>"; };
 		D9BBA0832B399D0400A73D34 /* SearchArtworksUC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchArtworksUC.swift; sourceTree = "<group>"; };
 		D9BBA0852B3F339D00A73D34 /* GetMoreInfoArtworkUC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetMoreInfoArtworkUC.swift; sourceTree = "<group>"; };
@@ -212,10 +218,12 @@
 			children = (
 				D98F0F312AA1BA06005AB694 /* ArtworkRepository.swift */,
 				D9A85F5A2B5EEBC4001E8E5F /* EventRepository.swift */,
+				D9A85F682B63DE5F001E8E5F /* UserRepository.swift */,
+				D98F0F392AA1C8E0005AB694 /* ArtworksLocalSource.swift */,
+				D9A85F642B63DD6D001E8E5F /* UserLocalSource.swift */,
 				D9A4F7F82B59324B00069B63 /* ExhibitionRepository.swift */,
 				D99D819C2A79B9EC00F6278E /* RemoteSource.swift */,
 				D98F0F372AA1C7B6005AB694 /* DTO */,
-				D98F0F392AA1C8E0005AB694 /* ArtworksLocalSource.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -236,6 +244,7 @@
 				D98F0F2F2AA1B991005AB694 /* ArtworkListVM.swift */,
 				D9C06F992B5555FE00A61EBC /* DetailArtworkVM.swift */,
 				D9A85F5C2B5EEC38001E8E5F /* EventsVM.swift */,
+				D9A85F662B63DE41001E8E5F /* UserVM.swift */,
 				D9C06F9D2B56D22600A61EBC /* ExhibitionsVM.swift */,
 				D9A1D3EF2ABC57A600AFBE5A /* FavoritesVM.swift */,
 				D9A1D3EA2AB99F0E00AFBE5A /* InfoVM.swift */,
@@ -507,6 +516,7 @@
 				D9A4F8012B5AC2E300069B63 /* GetExhibitionsUC.swift in Sources */,
 				D9A4F7FF2B5A858D00069B63 /* ShimmerLoading.swift in Sources */,
 				D99BA6E82AB0546C0083A179 /* StartingScreen.swift in Sources */,
+				D9A85F672B63DE41001E8E5F /* UserVM.swift in Sources */,
 				D98F0F2A2A9FCBD3005AB694 /* Custom.swift in Sources */,
 				D9A85F5F2B5EEC6F001E8E5F /* EventsLIstScreen.swift in Sources */,
 				D9BBA08A2B474E1900A73D34 /* DataArtworksService.swift in Sources */,
@@ -526,10 +536,12 @@
 				D9C06F9E2B56D22600A61EBC /* ExhibitionsVM.swift in Sources */,
 				D9BBA0822B39855700A73D34 /* SearchView.swift in Sources */,
 				D99BA6E42AAF7EA20083A179 /* GameMainScreen.swift in Sources */,
+				D9A85F692B63DE5F001E8E5F /* UserRepository.swift in Sources */,
 				D94F7F0D2AA8B93E002E064F /* MainScreen.swift in Sources */,
 				D99E701B2AF4511300725719 /* PersistentContainer.swift in Sources */,
 				D9A1D3ED2ABC35D200AFBE5A /* FavoritesScreen.swift in Sources */,
 				D9A85F552B5C15A6001E8E5F /* DetailExhibitionScreen.swift in Sources */,
+				D9A85F652B63DD6D001E8E5F /* UserLocalSource.swift in Sources */,
 				D9A4F7F92B59324B00069B63 /* ExhibitionRepository.swift in Sources */,
 				D9BBA0862B3F339E00A73D34 /* GetMoreInfoArtworkUC.swift in Sources */,
 				D98F0F302AA1B991005AB694 /* ArtworkListVM.swift in Sources */,

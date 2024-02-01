@@ -8,10 +8,12 @@ struct ArtInstituteChicagoApp: App {
     }
     var body: some Scene {
         WindowGroup {
-//            MainScreen()
-//            InfoScreen()
-            StartingScreen()
-//            SettingsScreen()
+               if UserDefaults.standard.object(forKey: "userName") == nil {
+                StartingScreen()
+            }
+        else {
+                MainScreen()
+            }
         }
     }
 }

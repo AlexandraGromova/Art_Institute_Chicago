@@ -34,7 +34,7 @@ class ArtworkListVM: ObservableObject {
             }
             .store(in: &cancelable)
     }
-
+    
     
     func updateArtworks() {
         getArtworksUC.execute { list in
@@ -79,8 +79,8 @@ class ArtworkListVM: ObservableObject {
         }
     }
     
-    func saveSearchArtwork(artworkId: Int){
-        getMoreInfoArtworkUC.execute(artworkId: artworkId){ response in
+    func saveSearchArtwork(artworkId: Int) {
+        getMoreInfoArtworkUC.execute(artworkId: artworkId) { response in
             let index = self.artworks.firstIndex { item in
                 return item.id == response.data.id
             }
@@ -89,26 +89,21 @@ class ArtworkListVM: ObservableObject {
                 self.saveArtwork(artwork: self.artworks[index])
             }
         }
-        print("saveSearchArtwork")
     }
     
     func saveArtwork(artwork: Artwork) {
         repository.saveArtwork(artwork: artwork)
     }
     
-    var counter = 0
-    
-    func getFavoritsSubscription(){
+    func getFavoritsSubscription() {
         let list = repository.getFavorites()
         artworksCD = list.map({ item in
             return Artwork(id: Int(item.id_favorite), image_id: item.image_id, api_link: "", title: item.title, place_of_origin: item.place_of_origin, date_start: Int(item.date_start), artist_display: item.artist_display, style_title: item.style_title, medium_display: item.medium_display)
         })
     }
-
-    
     
     func deleteFavorite(artworkId: Int) {
         repository.deleteFavorite(artworkId: artworkId)
     }
 }
-    
+

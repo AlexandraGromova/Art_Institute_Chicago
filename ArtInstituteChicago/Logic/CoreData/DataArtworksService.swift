@@ -2,12 +2,11 @@ import Foundation
 import CoreData
 import Combine
 
-class DataArtworksService{
+class DataArtworksService {
     
     let persistentContainer: NSPersistentContainer = PersistentContainer.shared.container
     let request: NSFetchRequest<ArtworkCD> = ArtworkCD.fetchRequest()
     lazy var context = persistentContainer.viewContext
-    
     
     func getFavorites() -> [ArtworkCD] {
         let list = try? context.fetch(request)
@@ -33,7 +32,7 @@ class DataArtworksService{
                 artworkCD.title = artwork.title
                 try? context.save()
             }
-            catch{
+            catch {
                 print("Failed to save artwork to core data: \(error)")
             }
         }
@@ -43,21 +42,10 @@ class DataArtworksService{
             let result = try context.fetch(request)
             result.forEach { item in
                 if  item.id_favorite == artworkId {
-                    print ("test_start count in data = \(result.count)")
                     context.delete(item)
                     try? context.save()
-                    print ("test_end count in data = \(result.count)")
                 }
             }
-            
-//            for data in result {
-//                context.delete(data)
-//                print ("test count in data_start = \(result.count)")
-//                let id = data.id
-//                let id_favorite = data.id_favorite
-//                let artist = data.title
-//            }
-            
         } catch let error as NSError {
             print("Could not load data: \(error.localizedDescription)")
         }

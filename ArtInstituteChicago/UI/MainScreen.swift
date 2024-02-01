@@ -3,7 +3,7 @@ import SwiftUI
 
 struct MainScreen: View {
     
-    var vm = AppContainer.resolve(ArtworkLocalSource.self)
+    var vm = AppContainer.resolve(UserVM.self)
     
     var body: some View {
         NavigationStack {
@@ -12,16 +12,6 @@ struct MainScreen: View {
                     HStack() {
                         Spacer()
                             .frame(width: 15)
-                        NavigationLink {
-                            SettingsScreen()
-                        } label: {
-                            Image(systemName: "gearshape.circle.fill")
-                                .resizable()
-                                .scaledToFit()
-                                .foregroundColor(Color.darkGreen)
-                                .frame(width: 40)
-                        }
-                        Spacer()
                         NavigationLink {
                             InfoScreen()
                         } label: {
@@ -32,7 +22,6 @@ struct MainScreen: View {
                                 .frame(width: 40)
                         }
                         Spacer()
-                            .frame(width: 15)
                         NavigationLink {
                             UserProfileScreen()
                         } label: {
@@ -55,38 +44,26 @@ struct MainScreen: View {
                         .lineLimit(nil)
                         .frame(width: UIScreen.main.bounds.size.width - 25, alignment: .leading)
                         .customAmericanTypewriterLight(size: 40)
-                    HStack() {
-                        Spacer()
-                        NavigationLink {
-                            GameMainScreen()
-                        } label: {
-                            MainButton(title: LocalizedStringKey("play"), imageWidth: Int(UIScreen.main.bounds.size.width/2) - 20, imageHeight: 100)
-                        }
-                        Spacer()
-                        
-                        NavigationLink {
-                            FavoritesScreen()
-                        } label: {
-                            MainButton(title: LocalizedStringKey("favorite"), imageWidth: Int(UIScreen.main.bounds.size.width/2) - 20, imageHeight: 100)
-                        }
-                          Spacer()
+                    NavigationLink {
+                        ArtworksListScreen()
+                    } label: {
+                        MainButton(title: LocalizedStringKey("artworks"), image: "plug_image", imageWidth: Int(UIScreen.main.bounds.size.width) - 25, imageHeight: 100)
                     }
                     NavigationLink {
                         EventsLIstScreen()
                     } label: {
-                        MainButton(title: LocalizedStringKey("events"), imageWidth: Int(UIScreen.main.bounds.size.width) - 25, imageHeight: 150,  isLarge: true)
-                    }
-                    NavigationLink {
-                        ArtworksListScreen()
-                    } label: {
-                        MainButton(title: LocalizedStringKey("artworks"), imageWidth: Int(UIScreen.main.bounds.size.width) - 25, imageHeight: 100)
+                        MainButton(title: LocalizedStringKey("events"), image: "plug_events", imageWidth: Int(UIScreen.main.bounds.size.width) - 25, imageHeight: 150,  isLarge: true)
                     }
                     NavigationLink {
                         ExhibitionsListScreen()
                     } label: {
-                        MainButton(title: LocalizedStringKey("exhibitions"), imageWidth: Int(UIScreen.main.bounds.size.width) - 25, imageHeight: 100)
+                        MainButton(title: LocalizedStringKey("exhibitions"), image: "plug_exhibitions", imageWidth: Int(UIScreen.main.bounds.size.width) - 25, imageHeight: 100)
                     }
-                  
+                    NavigationLink {
+                        FavoritesScreen()
+                    } label: {
+                        MainButton(title: LocalizedStringKey("favorite"), image: "plug_favorite", imageWidth: Int(UIScreen.main.bounds.size.width) - 25, imageHeight: 100)
+                    }
                     Spacer()
                 }
             }
@@ -98,12 +75,13 @@ struct MainScreen: View {
 
 struct MainButton: View {
     var title: LocalizedStringKey
+    var image: String
     var imageWidth: Int
     var imageHeight: Int
     var isLarge = false
     var body: some View {
         ZStack(alignment: .leading) {
-            Image("second_plug_image")
+            Image(image)
                 .resizable()
                 .scaledToFill()
                 .frame(width:  CGFloat(imageWidth), height:  CGFloat(imageHeight))

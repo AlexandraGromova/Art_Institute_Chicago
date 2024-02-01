@@ -9,7 +9,6 @@ class GetMoreInfoArtworkUC {
     }
     
     func execute(artworkId: Int, completion: @escaping (ArtworkSearchResponse) -> ()) {
-        print("test_GetMoreInfoArtworkUC_execute")
         repository.getArtwork(artworkId: artworkId, completion: completion)
     }
 }

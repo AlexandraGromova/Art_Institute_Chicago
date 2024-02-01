@@ -8,7 +8,7 @@ class DateFormating {
         formatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ssZ"
         let newDate = formatter.date(from: date)
         formatter.dateFormat = "YY, MMM d"
-        var y = formatter.string(from: newDate ?? Date()) //todo
+        var y = formatter.string(from: newDate ?? Date())
         return y
     }
 }
@@ -26,8 +26,20 @@ extension String {
         formatter.locale = Locale(identifier: "en_US_POSIX")
         formatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ssZ"
         let newDate = formatter.date(from: self)
-        formatter.dateFormat = "MMM d"
-        var y = formatter.string(from: newDate ?? Date()) //todo
+        formatter.dateFormat = "MMMd"
+        var y = formatter.string(from: newDate ?? Date())
+        return y
+    }
+}
+
+extension Date {
+    func toSting() -> String {
+        let formatter = DateFormatter()
+        formatter.locale = Locale(identifier: "en_US_POSIX")
+        formatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ssZ"
+        let newDate = self
+        formatter.dateFormat = "MMMM d"
+        var y = formatter.string(from: newDate ?? Date())
         return y
     }
 }

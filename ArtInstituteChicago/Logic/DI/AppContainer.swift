@@ -58,6 +58,16 @@ class AppContainer {
         container.register(EventsVM.self) { r in
             EventsVM(getEventsUC: r.resolve(GetEventsUC.self)!)
         }
+        container.register(UserLocalSource.self) { r in
+            UserLocalSource()
+        }
+        container.register(UserRepository.self) { r in
+            UserRepository(localSource: r.resolve(UserLocalSource.self)!)
+        }
+        container.register(UserVM.self) { r in
+            UserVM(repository: r.resolve(UserRepository.self)!)
+        }
+        
     }
     
     static func resolve<T>(_ serviceType: T.Type) -> T {

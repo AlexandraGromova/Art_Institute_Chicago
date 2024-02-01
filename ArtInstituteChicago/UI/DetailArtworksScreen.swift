@@ -41,7 +41,7 @@ struct DetailArtworksScreen: View {
                     .foregroundColor(Color.darkGreen)
                     .frame(width: UIScreen.main.bounds.size.width - 70)
                 Spacer()
-                VStack(){
+                VStack() {
                     InfoAboutArtwork(text: artwork.artist_display ?? "" , title: "Artist:")
                     InfoAboutArtwork(text: artwork.place_of_origin ?? "", title: "Place:")
                     InfoAboutArtwork(text: String(artwork.date_start ?? 0), title: "Date:")
@@ -52,7 +52,7 @@ struct DetailArtworksScreen: View {
             }
             
             Button(action: {
-                if isFavorite == true{
+                if isFavorite == true {
                     vm.deleteFavorite(id: artwork.id ?? 0)
                     self.isFavorite.toggle()
                 }
@@ -73,7 +73,6 @@ struct DetailArtworksScreen: View {
             vm.getMoreInfoArtwork(by: artwork.id ?? 0) { newItem in
                 artwork = newItem
             }
-            print("test_DetailArtwork_artwork = \(artwork.title), \(artwork.place_of_origin)")
         }
         .ignoresSafeArea()
         .setupScreen()

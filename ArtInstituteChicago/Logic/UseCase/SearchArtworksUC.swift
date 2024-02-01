@@ -14,7 +14,6 @@ class SearchArtworksUC {
         repository.getSearchingArtworks(text: text, currentPage: currentPage + 1) { response in
             self.totalPages = response.pagination.total_pages ?? 5
             self.currentPage = response.pagination.current_page ?? 1
-            print("test_response_totalPages \(self.totalPages)")
             completion(response.data)
         }
     }
@@ -28,6 +27,5 @@ class SearchArtworksUC {
     
     func reset() {
         currentPage = 0
-        print("test_reset_response \(self.totalPages)")
     }
 }

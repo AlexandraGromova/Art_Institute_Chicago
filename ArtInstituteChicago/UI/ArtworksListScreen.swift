@@ -55,7 +55,6 @@ struct ArtworksListScreen: View {
                             .progressViewStyle(.circular)
                             .tint(Color.darkGreen)
                             .frame(width: 50, height: 50)
-                        
                     }
                     Spacer()
                         .frame(height: 20)
@@ -106,7 +105,6 @@ struct ArtworksListCell: View {
             Spacer()
             Button(action: {
                 if self.isFavorite == true {
-                    print("test_Button \(id)")
                     onDeleteTapAction(id)
                     
                     self.isFavorite.toggle()
