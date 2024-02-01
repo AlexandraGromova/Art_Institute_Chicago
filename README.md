@@ -10,6 +10,6 @@ Art Institute Chicago App using the [API](http://api.artic.edu) for constructing
 ## Tech stack & Open-source libraries
 Project is created with:
 * Swinject
-* Combain
+* Combine
 * SwiftUI
 * MVVM Architecture
