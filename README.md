@@ -5,6 +5,14 @@
 This project is designed to browse and search the art collections, events, and exhibitions of the Art Institute of Chicago.
 
 ## Tech stack & Open-source libraries
+
+<img src="https://github.com/user-attachments/assets/cae457cc-883e-4e90-9e26-39487392530e" align="right" width="200"/>
+  <br>
+   <br>
+
+
+
+
 Project is created with:
 
 - Minimum SDK level 17.0 
@@ -14,7 +22,7 @@ Project is created with:
 
   <br>
 
-## Architecture
+### Architecture
 - MVVM Architecture
 - Repository
 
